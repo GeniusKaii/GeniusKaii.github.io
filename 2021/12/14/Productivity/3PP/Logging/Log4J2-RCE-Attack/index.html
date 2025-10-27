@@ -302,7 +302,7 @@
 <p>在我知道的时间线上：</p>
 <ul>
 <li>Nov.24，阿里云向 Apache 提交 Log4J2 的 RCE (Remote Code Execution) 漏洞。</li>
-<li>Nov.30，Apache Log4J 开始在 Github 自己提交<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FwYWNoZS9sb2dnaW5nLWxvZzRqMi9wdWxsLzYwOC9jb21taXRz">补丁<i class="fa fa-external-link-alt"></i></span>。</li>
+<li>Nov.30，Apache Log4J 开始在 GitHub 自己提交<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FwYWNoZS9sb2dnaW5nLWxvZzRqMi9wdWxsLzYwOC9jb21taXRz">补丁<i class="fa fa-external-link-alt"></i></span>。</li>
 <li>Dec.6，Apache Log4J 发布 <span class="exturl" data-url="aHR0cHM6Ly9sb2dnaW5nLmFwYWNoZS5vcmcvbG9nNGovMi54L2NoYW5nZXMtcmVwb3J0Lmh0bWwjYTIuMTUuMA==">2.15.0 版本<i class="fa fa-external-link-alt"></i></span>。Limit the protocols JNDI can use by default. Limit the servers and classes that can be accessed via LDAP. Fixes <span class="exturl" data-url="aHR0cHM6Ly9pc3N1ZXMuYXBhY2hlLm9yZy9qaXJhL2Jyb3dzZS9MT0c0SjItMzIwMQ==">LOG4J2-3201<i class="fa fa-external-link-alt"></i></span>.</li>
 <li>Dec.9，<strong>阿里云应急响应</strong>开始推送，并在圈内引起讨论。</li>
 <li>Dec.10，<strong>阿里云应急响应</strong>更新推送，并出现在了我的时间线上。</li>
@@ -311,7 +311,7 @@
 <h2 id="问题的引入"><a href="#问题的引入" class="headerlink" title="问题的引入"></a>问题的引入</h2><p>在 2013 年的时候，<span class="exturl" data-url="aHR0cHM6Ly9ibG9ncy5hcGFjaGUub3JnL2xvZ2dpbmcvZW50cnkvYXBhY2hlX2xvZzRqXzJfMF9iZXRhOQ==">version 2.0-beta9<i class="fa fa-external-link-alt"></i></span> 引入了 <strong>JNDILookup plugin</strong>。</p>
 <p>参考这篇：<span class="exturl" data-url="aHR0cDovL3d3dy5oYWNrZGlnLmNvbS8xMi9oYWNrLTU2MTM2NC5odG0=">log4shell 分析<i class="fa fa-external-link-alt"></i></span></p>
 <p>&lt;TBD 这些需要挖 code，后面补上！&gt;</p>
-<h2 id="问题的解决"><a href="#问题的解决" class="headerlink" title="问题的解决"></a>问题的解决</h2><p>参考 Github 提交：<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FwYWNoZS9sb2dnaW5nLWxvZzRqMi9jb21taXRzL3JlbGVhc2UtMi54P2FmdGVyPTU3Y2Y1Y2QwNzRkZWUxMjIyOThmOWU0ODUzNzc3YTY0MGFkODgyNmMrMjc5JmJyYW5jaD1yZWxlYXNlLTIueA==">apache/logging-log4j2<i class="fa fa-external-link-alt"></i></span>， 12 月 6 号左右</p>
+<h2 id="问题的解决"><a href="#问题的解决" class="headerlink" title="问题的解决"></a>问题的解决</h2><p>参考 GitHub 提交：<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FwYWNoZS9sb2dnaW5nLWxvZzRqMi9jb21taXRzL3JlbGVhc2UtMi54P2FmdGVyPTU3Y2Y1Y2QwNzRkZWUxMjIyOThmOWU0ODUzNzc3YTY0MGFkODgyNmMrMjc5JmJyYW5jaD1yZWxlYXNlLTIueA==">apache/logging-log4j2<i class="fa fa-external-link-alt"></i></span>， 12 月 6 号左右</p>
 <p>&lt;TBD 这些需要挖 code，后面补上！&gt;</p>
 <h1 id="尝试复现"><a href="#尝试复现" class="headerlink" title="尝试复现"></a>尝试复现</h1><p>试一下在自己的机器上进行漏洞攻防！（首先按照这一篇配好 <code>log4j</code>：<a href="/onepiece-hexo/2021/12/20/Productivity/3PP/Logging/Configure-Log4J/">Log4J 配置</a>）</p>
 <p>这里复现主要是通过测试 JNDI 对外部域名的访问记录，如上文所言，只要防御方能访问攻击方指定的特定网站，那么理论上攻击方就可以执行任何命令。具体测试方法：对一个 POST 方法，传入一个包含外部域名的 JNDI 命令，并观察外部域名网站的调用记录。如果对机器发送 POST 请求后，外部域名网站有访问记录，那么就可以视为本机器有此漏洞。</p>

@@ -263,9 +263,9 @@
 cpu 持续 100% 的时候有点不知所措，直接重启了 node，现在 cpu 已经稳定了，简单看了 /var/log/messages 发现上面的“孤儿 pod”。</p>
 <p>虽然不知道跟 cpu 占用有没有联系，姑且先把这个问题解决一下。
 ###查资料
-<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2t1YmVybmV0ZXMva3ViZXJuZXRlcy9pc3N1ZXMvNjA5ODc=">Github issue<i class="fa fa-external-link-alt"></i></span>
+<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2t1YmVybmV0ZXMva3ViZXJuZXRlcy9pc3N1ZXMvNjA5ODc=">GitHub issue<i class="fa fa-external-link-alt"></i></span>
 <span class="exturl" data-url="aHR0cHM6Ly9jbG91ZC50ZW5jZW50LmNvbS9kZXZlbG9wZXIvYXJ0aWNsZS8xMzg1OTEx">腾讯云社区贴<i class="fa fa-external-link-alt"></i></span></p>
-<p>然而 Github 的帖子两年了也没个官方回复……</p>
+<p>然而 GitHub 的帖子两年了也没个官方回复……</p>
 <p>###解决方案
 手动删掉那个孤儿 pod 的目录，就行了。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /var/lib/kubelet/pods</span><br><span class="line">rm -rf 120b82b8-016e-11eb-a8e3-00163e06d212/</span><br></pre></td></tr></table></figure>
