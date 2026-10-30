@@ -102,13 +102,15 @@
 
 /* 提示语（来自 front-matter 的 message） */
 #hexo-blog-encrypt .hbe-input {
-  display: block !important;
+  display: flex !important;
+  flex-direction: column;
   width: 100% !important;
   min-width: 0 !important;
   margin: 0 0 18px !important;
   float: none !important;
 }
 #hexo-blog-encrypt .hbe-input-label {
+  order: -1;
   display: block !important;
   float: none !important;
   width: auto !important;
