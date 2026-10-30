@@ -24,7 +24,7 @@
 
   <meta name="description" content="这几年摸了不少SSL相关，觉得同事们做的分享都不是很满意，自己试着写一个。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="TLS SSL 讲课笔记（没讲过）">
+<meta property="og:title" content="[AI 补完] TLS SSL 讲课笔记（没讲过）">
 <meta property="og:url" content="https://kaii.fun/2020/07/03/Productivity/Basic/My-View-on-TLS-SSL/index.html">
 <meta property="og:site_name" content="楚不得">
 <meta property="og:description" content="这几年摸了不少SSL相关，觉得同事们做的分享都不是很满意，自己试着写一个。">
@@ -73,7 +73,7 @@
   padding: 0 10px 0 14px;
 }
 </style>
-  <title>TLS SSL 讲课笔记（没讲过） | 楚不得</title>
+  <title>[AI 补完] TLS SSL 讲课笔记（没讲过） | 楚不得</title>
   
 
 
@@ -205,7 +205,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          TLS SSL 讲课笔记（没讲过）
+          [AI 补完] TLS SSL 讲课笔记（没讲过）
         </h1>
 
         <div class="post-meta">
@@ -234,14 +234,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>511</span>
+              <span>3.3k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>1 mins.</span>
+              <span>3 mins.</span>
             </span>
 
         </div>
@@ -266,7 +266,97 @@
 之前上网都是随便玩玩，知道https比http多了一个secure的概念，但也只是知道。
 到自己建站的时候想enable https，才知道：哦，要向签证中心申请证书~</p>
 <p>好起来了，有了证书，那SSL就来了。</p>
-<h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><h4 id="什么是SSL-TLS"><a href="#什么是SSL-TLS" class="headerlink" title="什么是SSL/TLS"></a>什么是SSL/TLS</h4><p><em>To be continued… &lt;–</em>(此处应有BGM)</p>
+<h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><h4 id="什么是-SSL-TLS"><a href="#什么是-SSL-TLS" class="headerlink" title="什么是 SSL/TLS"></a>什么是 SSL/TLS</h4><p>（此处应有 BGM）</p>
+<p>先给一句我自己的定义：</p>
+<blockquote>
+<p>SSL/TLS 是一套协议，让两个从没见过面、还隔着一条谁都可能偷听的线路的人，先花几百字节谈成一件事——<strong>接下来用什么密码说话</strong>——然后开始说悄悄话。</p>
+</blockquote>
+<p>拆开就是三件事，讲课的顺序千万别搞反：</p>
+<ul>
+<li><strong>机密性</strong>：中间人看得到流量的长度和节奏，看不到内容；</li>
+<li><strong>完整性</strong>：改一个字节，接收方就知道（HMAC / AEAD 里的 tag）；</li>
+<li><strong>身份认证</strong>：跟我说话的那个家伙，真的是 <code>example.com</code> 吗？</li>
+</ul>
+<p>只加密不认证，等于对着一个自称是你朋友的人说心里话——这就是为什么单纯”上个加密”没有意义。</p>
+<p>顺便，名字是个历史包袱：SSL 是 Netscape 时代的老名字（2.0 / 3.0），后来 IETF 接手改名 TLS（1.0 / 1.1 / 1.2 / 1.3）。现在说”SSL 证书””SSL 加密”，其实全是 TLS，只是叫顺嘴了。真要说规范，<strong>SSL 2.0/3.0 已经死了，别再用</strong>。</p>
+<h4 id="非对称加密这么优雅，为什么还要对称"><a href="#非对称加密这么优雅，为什么还要对称" class="headerlink" title="非对称加密这么优雅，为什么还要对称"></a>非对称加密这么优雅，为什么还要对称</h4><p>因为贵。</p>
+<p>RSA / ECC 的运算比 AES 慢好几个数量级，拿它加密视频流，CPU 会先哭。所以真正的分工是这样的：</p>
+<ol>
+<li>握手阶段用非对称（或密钥交换）把<strong>会话密钥</strong>谈出来；</li>
+<li>之后所有数据都用对称加密（AES-GCM / ChaCha20-Poly1305）跑。</li>
+</ol>
+<p>握手的目的不是”加密数据”，而是”在不安全的信道上，安全地协商出一把只有两个人知道的临时钥匙”。想清楚这一点，整个协议就不再神秘了。</p>
+<p>另外补一句这几年的变化：<strong>RSA 密钥交换基本该淘汰了</strong>（前向安全性差、还怕量子），现在标配是 ECDHE + X25519——每次会话都换一把临时钥匙，私钥哪天泄露也解不开历史流量。</p>
+<h4 id="握手其实是一场谈判"><a href="#握手其实是一场谈判" class="headerlink" title="握手其实是一场谈判"></a>握手其实是一场谈判</h4><p>把握手理解成”商务谈判”就好懂：双方先对暗号（版本）、再看能接受哪些条件（加密套件）、互相验证身份（证书），最后交换筹码（密钥材料）。</p>
+<p><strong>TLS 1.2</strong>：两次往返（2-RTT）。
+<code>ClientHello</code>（我支持这些版本/套件，这是我的随机数）→ <code>ServerHello</code> + 证书 + 密钥交换参数 → 客户端验证书、算 pre-master、加密发回 → 双方 <code>Finished</code>。</p>
+<p><strong>TLS 1.3</strong>：一次往返（1-RTT），会话恢复还能 0-RTT。
+它做的事其实是”减法”：把 RSA 密钥交换、CBC 模式、RC4、SHA-1 这些不该存在的东西全砍了，握手报文虽然明文可见，但被 AEAD 保护。所以它<strong>又快又安全</strong>——不是因为加了什么，是因为删了什么。</p>
+<blockquote>
+<p>0-RTT 有个坑：早期数据可被重放。用在幂等请求上还行，用在”下单””转账”上就是事故。</p>
+</blockquote>
+<h4 id="证书到底在证明什么"><a href="#证书到底在证明什么" class="headerlink" title="证书到底在证明什么"></a>证书到底在证明什么</h4><p>一句话：<strong>证书只证明”这个域名，在这个时间段内，对应这把公钥”，且这个声明由一个被信任的 CA 签过字。</strong></p>
+<p>信任链是这样的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">系统&#x2F;浏览器内置的根证书(Root CA)</span><br><span class="line">        ↓ 签发</span><br><span class="line">中级证书(Intermediate CA)</span><br><span class="line">        ↓ 签发</span><br><span class="line">你网站的证书(Leaf)</span><br></pre></td></tr></table></figure>
+
+<p>浏览器验的不是”你行不行”，而是”能不能一路签名签到我信任的某个根”。所以：</p>
+<ul>
+<li><strong>中级证书没配</strong>：桌面浏览器可能靠缓存/AIA 自动补链，看起来一切正常；某些安卓、某些客户端就直接报错——这就是经典的”我这儿能开，别人那儿打不开”；</li>
+<li><strong>证书不等于安全</strong>：钓鱼站也能申请到证书，<code>https</code> + 小锁只是说”连接没被改”，不说”这站不骗人”；</li>
+<li><strong>SNI</strong>：一台 IP 挂几十个域名，靠 SNI 在握手时告诉服务器你要哪个证书。TLS 1.3 之后 SNI 默认还是明文，所以有了 ECH（加密客户端问候）这种在路上的东西——顺便，这也是”域名前置”为什么曾经有效的原因。</li>
+</ul>
+<h4 id="有了-TLS，为什么还能被中间人"><a href="#有了-TLS，为什么还能被中间人" class="headerlink" title="有了 TLS，为什么还能被中间人"></a>有了 TLS，为什么还能被中间人</h4><p>这是当年我最想不通的点：既然加密了，凭什么还能劫持？</p>
+<p>答案很朴素：<strong>MITM 从来不是”破解加密”，而是”骗你的客户端信任我的证书”。</strong></p>
+<p>攻击者站在中间，跟服务器说”我是客户端”，跟你客户端说”我是服务器”，然后掏出自己签的证书。理论上浏览器会报警——除非：</p>
+<ol>
+<li>攻击者把你的根证书装进了系统（企业代理就是这么干的，合规审计的常见姿势）；</li>
+<li>你点过”继续前往（不安全）”；</li>
+<li>站点没有 HSTS，被降级到 http。</li>
+</ol>
+<p>反过来，我大学时替换别人网页图片那件事为什么那么丝滑？因为那些请求本身就是 <strong>http</strong>，从头到尾没有加密这回事。</p>
+<p>所以判断中间人的正确方法是看<strong>证书链和主机名</strong>，不是看有没有”加密”。顺手记一条：<code>curl -v</code> 里那行 <code>SSL certificate verify result</code> 比什么都诚实。</p>
+<h4 id="手边能敲的几个命令"><a href="#手边能敲的几个命令" class="headerlink" title="手边能敲的几个命令"></a>手边能敲的几个命令</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 看对端到底用了什么版本/套件，以及证书信息</span></span><br><span class="line">openssl s_client -connect example.com:443 -servername example.com &lt;/dev/null 2&gt;/dev/null \</span><br><span class="line">  | openssl x509 -noout -subject -issuer -dates</span><br><span class="line"></span><br><span class="line"><span class="comment"># 把整条证书链拿出来看（排查"中级证书没配"最有用）</span></span><br><span class="line">openssl s_client -connect example.com:443 -servername example.com -showcerts &lt;/dev/null</span><br><span class="line"></span><br><span class="line"><span class="comment"># 本地自签一张，纯测试用</span></span><br><span class="line">openssl req -x509 -newkey rsa:2048 -nodes -keyout key.pem -out cert.pem -days 30 -subj <span class="string">"/CN=test.local"</span></span><br></pre></td></tr></table></figure>
+
+<p>浏览器报错的分类，记住四个就够用：</p>
+<table>
+<thead>
+<tr>
+<th>报错</th>
+<th>大概率原因</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>ERR_CERT_AUTHORITY_INVALID</code></td>
+<td>链不对 / 自签 / 根证书没装</td>
+</tr>
+<tr>
+<td><code>ERR_CERT_COMMON_NAME_INVALID</code></td>
+<td>域名不匹配（含 SAN 里没写）</td>
+</tr>
+<tr>
+<td><code>ERR_CERT_DATE_INVALID</code></td>
+<td>过期，或本机时间不对</td>
+</tr>
+<tr>
+<td><code>ERR_SSL_VERSION_OR_CIPHER_MISMATCH</code></td>
+<td>套件谈不拢（老服务只开 TLS 1.0 之类）</td>
+</tr>
+</tbody></table>
+<h4 id="几个我踩过或者常见到的坑"><a href="#几个我踩过或者常见到的坑" class="headerlink" title="几个我踩过或者常见到的坑"></a>几个我踩过或者常见到的坑</h4><ul>
+<li><strong>证书过期没人管</strong>：Let’s Encrypt 90 天，续期自动化没做，某天全站红。acme.sh / certbot + 到期告警，别靠人记。</li>
+<li><strong>本机时间漂移</strong>：现场机器时间不对，证书校验必失败，第一眼容易怀疑到网络上去。排证书问题前先 <code>date</code>。</li>
+<li><strong>只配了叶子证书没配链</strong>：桌面正常、移动端挂，最难查的一类。</li>
+<li><strong>混合内容</strong>：页面走了 https，里面还引着 http 的脚本和图片；主动内容直接被拦，被动内容给个警告，用户看你就”半个小锁”。</li>
+<li><strong>HSTS 开了回不去</strong>：<code>includeSubDomains</code> 一开，所有子域都得有证书，想撤还得等 max-age 过期。上线前想清楚。</li>
+</ul>
+<h4 id="收尾：如果真要我讲这堂课"><a href="#收尾：如果真要我讲这堂课" class="headerlink" title="收尾：如果真要我讲这堂课"></a>收尾：如果真要我讲这堂课</h4><p>讲 TLS 最容易犯的错，是上来就讲数学：大素数、椭圆曲线、离散对数。听众三分钟之内就会掉线，然后全程陪笑。</p>
+<p>我现在的讲法会是这个顺序：</p>
+<ol>
+<li>先讲<strong>为什么需要它</strong>——就是文章开头那条线：我可视化地劫持过别人的流量，才知道裸奔的世界长什么样；</li>
+<li>再讲<strong>它怎么解决的</strong>——握手是一次谈判，证书是一次身份核对，加密只是谈判的产物；</li>
+<li>最后讲<strong>它解决不了什么</strong>——钓鱼、拖库、业务漏洞、你自己的弱口令，它一概不管。</li>
+</ol>
+<p>落一句总结：<strong>TLS 是”让陌生人在不安全的世界里说悄悄话”的工程妥协，不是安全本身。</strong> 真正的安全，从来不只在协议里。</p>
 
     </div>
 
@@ -363,7 +453,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#缘起"><span class="nav-number">1.</span> <span class="nav-text">缘起</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#MITM"><span class="nav-number">1.1.</span> <span class="nav-text">MITM</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#建站"><span class="nav-number">1.2.</span> <span class="nav-text">建站</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#介绍"><span class="nav-number">2.</span> <span class="nav-text">介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#什么是SSL-TLS"><span class="nav-number">2.1.</span> <span class="nav-text">什么是SSL&#x2F;TLS</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#缘起"><span class="nav-number">1.</span> <span class="nav-text">缘起</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#MITM"><span class="nav-number">1.1.</span> <span class="nav-text">MITM</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#建站"><span class="nav-number">1.2.</span> <span class="nav-text">建站</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#介绍"><span class="nav-number">2.</span> <span class="nav-text">介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#什么是-SSL-TLS"><span class="nav-number">2.1.</span> <span class="nav-text">什么是 SSL&#x2F;TLS</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#非对称加密这么优雅，为什么还要对称"><span class="nav-number">2.2.</span> <span class="nav-text">非对称加密这么优雅，为什么还要对称</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#握手其实是一场谈判"><span class="nav-number">2.3.</span> <span class="nav-text">握手其实是一场谈判</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#证书到底在证明什么"><span class="nav-number">2.4.</span> <span class="nav-text">证书到底在证明什么</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#有了-TLS，为什么还能被中间人"><span class="nav-number">2.5.</span> <span class="nav-text">有了 TLS，为什么还能被中间人</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#手边能敲的几个命令"><span class="nav-number">2.6.</span> <span class="nav-text">手边能敲的几个命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#几个我踩过或者常见到的坑"><span class="nav-number">2.7.</span> <span class="nav-text">几个我踩过或者常见到的坑</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#收尾：如果真要我讲这堂课"><span class="nav-number">2.8.</span> <span class="nav-text">收尾：如果真要我讲这堂课</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -443,12 +533,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">93k</span>
+    <span title="Symbols count total">95k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">1:24</span>
+    <span title="Reading time total">1:27</span>
 </div>
   <div class="powered-by">Powered by <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl theme-link" data-url="aHR0cHM6Ly90aGVtZS1uZXh0Lm9yZw==">NexT.Gemini</span>. Running on <span class="exturl theme-link" data-url="aHR0cHM6Ly9wYWdlcy5naXRodWIuY29tLw==">Github Pages</span>.
   </div>
