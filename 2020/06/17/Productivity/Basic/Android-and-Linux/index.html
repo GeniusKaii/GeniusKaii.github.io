@@ -259,26 +259,37 @@
     </div>
 <script>
 (function () {
+  var ROOM = '/hidden/';
   function patch() {
-    var fbs = document.querySelectorAll('.need-share-button_link[data-network="facebook"]');
+    var fbs = document.querySelectorAll('[data-network="facebook"]');
     for (var i = 0; i < fbs.length; i++) {
       var fb = fbs[i];
       var a = document.createElement('a');
-      a.href = '/hidden/';
+      a.href = ROOM;
       a.className = fb.className;
       a.title = '';
       a.setAttribute('aria-label', '');
       a.setAttribute('data-room', '1');
-      a.addEventListener('click', function (e) { e.stopPropagation(); });
       if (fb.parentNode) fb.parentNode.replaceChild(a, fb);
     }
-    return fbs.length > 0;
   }
-  var mo = new MutationObserver(function () {
-    if (patch()) mo.disconnect();
-  });
-  mo.observe(document.documentElement, { childList: true, subtree: true });
+  // 分享面板是点开按钮时才动态生成的，所以监听整棵树并常驻，不提前摘掉
+  new MutationObserver(patch).observe(document.documentElement, { childList: true, subtree: true });
   patch();
+
+  // 兜底：万一面板里的 facebook 图标没被替换到，点击也走密室
+  document.addEventListener('click', function (e) {
+    var t = e.target;
+    while (t && t !== document) {
+      if (t.getAttribute && t.getAttribute('data-network') === 'facebook') {
+        e.preventDefault();
+        e.stopPropagation();
+        window.location.href = ROOM;
+        return;
+      }
+      t = t.parentNode;
+    }
+  }, true);
 })();
 </script>
 
