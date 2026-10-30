@@ -280,9 +280,30 @@
         </span>
       </div>
     </div>
-<span style="display:block;text-align:right;line-height:1;margin:-4px 2px 0 0;">
-  <a href="/hidden/" title="" style="color:inherit;opacity:.15;font-size:13px;text-decoration:none;letter-spacing:2px;">·</a>
-</span>
+<script>
+(function () {
+  function patch() {
+    var fbs = document.querySelectorAll('.need-share-button_link[data-network="facebook"]');
+    for (var i = 0; i < fbs.length; i++) {
+      var fb = fbs[i];
+      var a = document.createElement('a');
+      a.href = '/hidden/';
+      a.className = fb.className;
+      a.title = '';
+      a.setAttribute('aria-label', '');
+      a.setAttribute('data-room', '1');
+      a.addEventListener('click', function (e) { e.stopPropagation(); });
+      if (fb.parentNode) fb.parentNode.replaceChild(a, fb);
+    }
+    return fbs.length > 0;
+  }
+  var mo = new MutationObserver(function () {
+    if (patch()) mo.disconnect();
+  });
+  mo.observe(document.documentElement, { childList: true, subtree: true });
+  patch();
+})();
+</script>
 
         <div class="reward-container">
   <div>深得我心！博主晚餐加鸡腿！</div>
