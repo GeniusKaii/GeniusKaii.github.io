@@ -71,6 +71,119 @@
   padding: 0 10px 0 14px;
 }
 </style>
+<style>
+/* ===== 加密页面板 ===== */
+#hexo-blog-encrypt.hbe-container {
+  max-width: 560px !important;
+  margin: 2.2em auto 3em !important;
+  padding: 0 !important;
+  overflow: visible !important;
+}
+#hexo-blog-encrypt .hbe-content {
+  text-align: left !important;
+  font-size: 100% !important;
+  padding: 40px 36px 32px !important;
+  border: 1px solid #ececec;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.06);
+}
+/* 锁形图标 */
+#hexo-blog-encrypt .hbe-form::before {
+  content: "";
+  display: block;
+  width: 26px;
+  height: 26px;
+  margin: 0 0 18px 2px;
+  background: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23111' stroke-width='1.6' stroke-linecap='round'%3E%3Crect x='4' y='10.5' width='16' height='10' rx='2.5'/%3E%3Cpath d='M8 10.5V7a4 4 0 0 1 8 0v3.5'/%3E%3C/svg%3E") no-repeat center / contain;
+  opacity: .8;
+}
+#hexo-blog-encrypt .hbe-form { margin: 0 !important; }
+
+/* 提示语（来自 front-matter 的 message） */
+#hexo-blog-encrypt .hbe-input {
+  display: block !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  margin: 0 0 18px !important;
+  float: none !important;
+}
+#hexo-blog-encrypt .hbe-input-label {
+  display: block !important;
+  float: none !important;
+  width: auto !important;
+  padding: 0 !important;
+  margin: 0 0 14px !important;
+  font-size: 17px !important;
+  font-weight: 600;
+  letter-spacing: .01em;
+  color: #1a1a1a !important;
+  line-height: 1.5;
+  cursor: default !important;
+}
+#hexo-blog-encrypt .hbe-input-label-content {
+  display: block !important;
+  padding: 0 !important;
+  width: auto !important;
+}
+
+/* 输入框 */
+#hexo-blog-encrypt .hbe-input-field {
+  float: none !important;
+  display: block !important;
+  width: 100% !important;
+  padding: 13px 15px !important;
+  font-size: 16px !important;
+  line-height: 1.4 !important;
+  color: #1a1a1a !important;
+  background: #fafafa !important;
+  border: 1px solid #e6e6e6 !important;
+  border-radius: 10px !important;
+  transition: border-color .18s ease, background .18s ease, box-shadow .18s ease;
+  -webkit-appearance: none;
+}
+#hexo-blog-encrypt .hbe-input-field:focus {
+  outline: none !important;
+  border-color: #111 !important;
+  background: #fff !important;
+  box-shadow: 0 0 0 3px rgba(17, 17, 17, .06) !important;
+}
+
+/* 按钮 */
+#hexo-blog-encrypt .hbe-button {
+  display: block !important;
+  width: 100% !important;
+  margin: 4px 0 0 !important;
+  padding: 13px 16px !important;
+  font-size: 15px !important;
+  font-weight: 600;
+  letter-spacing: .04em;
+  color: #fff !important;
+  background: #111 !important;
+  border: 1px solid #111 !important;
+  border-radius: 10px !important;
+  cursor: pointer;
+  transition: background .18s ease, transform .06s ease;
+}
+#hexo-blog-encrypt .hbe-button:hover { background: #333 !important; border-color: #333 !important; }
+#hexo-blog-encrypt .hbe-button:active { transform: translateY(1px); }
+
+/* 错误提示 */
+#hexo-blog-encrypt .hbe-error {
+  margin: 12px 0 0 !important;
+  min-height: 1.2em;
+  font-size: 13px !important;
+  line-height: 1.5;
+  color: #d0342c !important;
+  text-align: left !important;
+}
+
+@media (max-width: 767px) {
+  #hexo-blog-encrypt .hbe-content { padding: 28px 22px 24px !important; border-radius: 14px; }
+  #hexo-blog-encrypt .hbe-input-label { font-size: 16px !important; margin-bottom: 12px !important; }
+}
+</style>
+
   <title>Category: Kaii 谈生活 | 楚不得</title>
   
 
