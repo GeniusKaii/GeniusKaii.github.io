@@ -71,6 +71,124 @@
   padding: 0 10px 0 14px;
 }
 </style>
+<style>
+/* ===== 加密页面板 ===== */
+#hexo-blog-encrypt.hbe-container {
+  max-width: 560px !important;
+  margin: 2.2em auto 3em !important;
+  padding: 0 !important;
+  overflow: visible !important;
+}
+#hexo-blog-encrypt .hbe-content {
+  text-align: center !important;
+  font-size: 100% !important;
+  padding: 40px 36px 32px !important;
+  border: 1px solid #ececec;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.06);
+}
+/* 锁形图标 */
+#hexo-blog-encrypt .hbe-form::before {
+  content: "";
+  display: block;
+  width: 26px;
+  height: 26px;
+  margin: 0 auto 20px;
+  background: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23111' stroke-width='1.6' stroke-linecap='round'%3E%3Crect x='4' y='10.5' width='16' height='10' rx='2.5'/%3E%3Cpath d='M8 10.5V7a4 4 0 0 1 8 0v3.5'/%3E%3C/svg%3E") no-repeat center / contain;
+  opacity: .8;
+}
+#hexo-blog-encrypt .hbe-form { margin: 0 !important; }
+
+/* 提示语（来自 front-matter 的 message） */
+#hexo-blog-encrypt .hbe-input {
+  display: flex !important;
+  flex-direction: column;
+  width: 100% !important;
+  min-width: 0 !important;
+  margin: 0 0 18px !important;
+  float: none !important;
+}
+#hexo-blog-encrypt .hbe-input-label {
+  order: -1;
+  display: block !important;
+  float: none !important;
+  width: auto !important;
+  padding: 0 !important;
+  margin: 0 0 14px !important;
+  text-align: center !important;
+  font-size: 17px !important;
+  font-weight: 600;
+  letter-spacing: .01em;
+  color: #1a1a1a !important;
+  line-height: 1.5;
+  cursor: default !important;
+}
+#hexo-blog-encrypt .hbe-input-label-content {
+  display: block !important;
+  padding: 0 !important;
+  width: auto !important;
+}
+
+/* 输入框 */
+#hexo-blog-encrypt .hbe-input-field {
+  float: none !important;
+  display: block !important;
+  width: 100% !important;
+  padding: 14px 15px !important;
+  text-align: center !important;
+  letter-spacing: .14em;
+  font-size: 16px !important;
+  line-height: 1.4 !important;
+  color: #1a1a1a !important;
+  background: #fafafa !important;
+  border: 1px solid #e6e6e6 !important;
+  border-radius: 10px !important;
+  transition: border-color .18s ease, background .18s ease, box-shadow .18s ease;
+  -webkit-appearance: none;
+}
+#hexo-blog-encrypt .hbe-input-field:focus {
+  outline: none !important;
+  border-color: #111 !important;
+  background: #fff !important;
+  box-shadow: 0 0 0 3px rgba(17, 17, 17, .06) !important;
+}
+
+/* 按钮 */
+#hexo-blog-encrypt .hbe-button {
+  display: block !important;
+  width: 100% !important;
+  margin: 4px 0 0 !important;
+  padding: 13px 16px !important;
+  font-size: 15px !important;
+  font-weight: 600;
+  letter-spacing: .04em;
+  color: #fff !important;
+  background: #111 !important;
+  border: 1px solid #111 !important;
+  border-radius: 10px !important;
+  cursor: pointer;
+  transition: background .18s ease, transform .06s ease;
+}
+#hexo-blog-encrypt .hbe-button:hover { background: #333 !important; border-color: #333 !important; }
+#hexo-blog-encrypt .hbe-button:active { transform: translateY(1px); }
+
+/* 错误提示 */
+#hexo-blog-encrypt .hbe-error {
+  margin: 12px 0 0 !important;
+  min-height: 1.2em;
+  font-size: 13px !important;
+  line-height: 1.5;
+  color: #d0342c !important;
+  text-align: center !important;
+}
+
+@media (max-width: 767px) {
+  #hexo-blog-encrypt .hbe-content { padding: 28px 22px 24px !important; border-radius: 14px; }
+  #hexo-blog-encrypt .hbe-input-label { font-size: 16px !important; margin-bottom: 12px !important; }
+}
+</style>
+
   <title>楚不得</title>
   
 
@@ -149,12 +267,12 @@
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">12</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">11</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">107</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">87</span></a>
 
   </li>
         <li class="menu-item menu-item-about">
@@ -190,7 +308,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://kaii.fun/2020/06/12/Daily_Posts/English-learning/">
+    <link itemprop="mainEntityOfPage" href="https://kaii.fun/2026/11/03/Daily_Posts/weekly-digest-2026-11-03/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -204,14 +322,10 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/06/12/Daily_Posts/English-learning/" class="post-title-link" itemprop="url">英语随手记</a>
+            <a href="/2026/11/03/Daily_Posts/weekly-digest-2026-11-03/" class="post-title-link" itemprop="url">[AI][一周提炼] 凑合、重启、不确定性：这段时间只留下七句话</a>
         </h2>
 
         <div class="post-meta">
-          
-            <i class="fa fa-thumb-tack"></i>
-            <font color=7D26CD>置顶</font>
-            <span class="post-meta-divider">|</span>
           
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -219,22 +333,15 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2020-06-12 11:31:35" itemprop="dateCreated datePublished" datetime="2020-06-12T11:31:35+08:00">2020-06-12</time>
+              <time title="Created: 2026-11-03 10:25:00" itemprop="dateCreated datePublished" datetime="2026-11-03T10:25:00+08:00">2026-11-03</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2025-07-15 00:48:25" itemprop="dateModified" datetime="2025-07-15T00:48:25+08:00">2025-07-15</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Kaii-%E8%B0%88%E8%AF%AD%E8%A8%80/" itemprop="url" rel="index"><span itemprop="name">Kaii 谈语言</span></a>
+                  <a href="/categories/Kaii-%E8%B0%88%E7%94%9F%E6%B4%BB/" itemprop="url" rel="index"><span itemprop="name">Kaii 谈生活</span></a>
                 </span>
             </span>
 
@@ -244,7 +351,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>886</span>
+              <span>1.4k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
@@ -263,11 +370,11 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>一些不太清楚的词汇，看到就记下来，随时更新。
-老外并不太 care 你有没有语法错误，因为他们自己也不是 100% 的正确。我认为的区别就是人家能清楚地说出来，这个是 A 那个是 B, 而不是 I want this/that. 你讲中文还能嘴瓢呢，just speak out.</p>
+          <p>这段时间写着写着就散了：一篇讲凑合，一篇讲坚持，一篇讲协作，看着像三个话题。提炼一遍才发现，它们其实在说同一件事——<strong>别把感觉当结论。</strong></p>
+<p>下面是这七句，每句都能点回原文。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2020/06/12/Daily_Posts/English-learning/#more" rel="contents">
+              <a class="btn" href="/2026/11/03/Daily_Posts/weekly-digest-2026-11-03/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -291,7 +398,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://kaii.fun/2021/12/14/Productivity/3PP/Logging/Log4J2-RCE-Attack/">
+    <link itemprop="mainEntityOfPage" href="https://kaii.fun/2026/11/02/Productivity/Basic/reduce-uncertainty/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -305,14 +412,10 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/12/14/Productivity/3PP/Logging/Log4J2-RCE-Attack/" class="post-title-link" itemprop="url">Log4J 风波， Log4Shell</a>
+            <a href="/2026/11/02/Productivity/Basic/reduce-uncertainty/" class="post-title-link" itemprop="url">[AI] 把不确定性压到最低</a>
         </h2>
 
         <div class="post-meta">
-          
-            <i class="fa fa-thumb-tack"></i>
-            <font color=7D26CD>置顶</font>
-            <span class="post-meta-divider">|</span>
           
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -320,22 +423,15 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2021-12-14 13:15:04" itemprop="dateCreated datePublished" datetime="2021-12-14T13:15:04+08:00">2021-12-14</time>
+              <time title="Created: 2026-11-02 19:50:00" itemprop="dateCreated datePublished" datetime="2026-11-02T19:50:00+08:00">2026-11-02</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-05-04 13:41:20" itemprop="dateModified" datetime="2022-05-04T13:41:20+08:00">2022-05-04</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/3PP/" itemprop="url" rel="index"><span itemprop="name">3PP</span></a>
+                  <a href="/categories/Kaii-%E8%B0%88%E8%BD%AF%E4%BB%B6/" itemprop="url" rel="index"><span itemprop="name">Kaii 谈软件</span></a>
                 </span>
             </span>
 
@@ -345,14 +441,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>16k</span>
+              <span>1.5k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>15 mins.</span>
+              <span>1 mins.</span>
             </span>
 
         </div>
@@ -364,10 +460,640 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>永远不要小看任何一个部件。</p>
+          <p>对接类的工作，一半时间在处理<strong>系统之间</strong>的不确定性，另一半时间在处理<strong>人和人之间</strong>的不确定性。</p>
+<p>前者表现为字段漂移、重复投递、对方半夜升级；后者表现为群里一句”我们没收到，你们发了吗”，然后两边猜三天。</p>
+<p>看起来是两件事，其实是同一套功夫：<strong>别让”我以为”进入流程，把该核对的东西都变成可核对的事实。</strong></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2021/12/14/Productivity/3PP/Logging/Log4J2-RCE-Attack/#more" rel="contents">
+              <a class="btn" href="/2026/11/02/Productivity/Basic/reduce-uncertainty/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://kaii.fun/2026/10/30/Daily_Posts/make-effort-accumulate/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Genius Kaii">
+      <meta itemprop="description" content="人和人的差距在归纳和讲课">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="楚不得">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2026/10/30/Daily_Posts/make-effort-accumulate/" class="post-title-link" itemprop="url">[AI] 把努力攒下来：四件不用意志力的小事</a>
+        </h2>
+
+        <div class="post-meta">
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2026-10-30 10:20:00" itemprop="dateCreated datePublished" datetime="2026-10-30T10:20:00+08:00">2026-10-30</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Kaii-%E8%B0%88%E7%94%9F%E6%B4%BB/" itemprop="url" rel="index"><span itemprop="name">Kaii 谈生活</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>1.8k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>2 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>同样忙三年，有人长出了东西，有人只是又忙了三年。</p>
+<p>这篇想说的其实是同一件事，拆成四个动作：<strong>怎么让努力留得下来。</strong>顺序有讲究——先让你动得起来（不靠硬撑），再让你动了有存货（别白干），然后让存货别含错（复盘），最后让存货自己长大（写下来）。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2026/10/30/Daily_Posts/make-effort-accumulate/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://kaii.fun/2026/10/29/Daily_Posts/restart-is-persistence/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Genius Kaii">
+      <meta itemprop="description" content="人和人的差距在归纳和讲课">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="楚不得">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2026/10/29/Daily_Posts/restart-is-persistence/" class="post-title-link" itemprop="url">[AI] 能重启，才叫坚持</a>
+        </h2>
+
+        <div class="post-meta">
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2026-10-29 09:25:19" itemprop="dateCreated datePublished" datetime="2026-10-29T09:25:19+08:00">2026-10-29</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Kaii-%E8%B0%88%E7%94%9F%E6%B4%BB/" itemprop="url" rel="index"><span itemprop="name">Kaii 谈生活</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>966</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>1 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>我们从小被教的”坚持”，是<strong>一天都不落</strong>：日更、打卡365天、连续跑了多少公里。这种定义有个致命缺陷——它把”中断”直接判成失败，而中断是必然发生的：会生病，会加班，会有连着两周什么都不想干的时候。</p>
+<p>于是大多数人不是败给了事情太难，是败给了自己那套记分方式：断了一次，账就归零了；归零了，就算了。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2026/10/29/Daily_Posts/restart-is-persistence/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://kaii.fun/2026/10/28/Daily_Posts/when-to-be-sloppy/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Genius Kaii">
+      <meta itemprop="description" content="人和人的差距在归纳和讲课">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="楚不得">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2026/10/28/Daily_Posts/when-to-be-sloppy/" class="post-title-link" itemprop="url">[AI] 什么时候凑合是对的</a>
+        </h2>
+
+        <div class="post-meta">
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2026-10-28 19:05:34" itemprop="dateCreated datePublished" datetime="2026-10-28T19:05:34+08:00">2026-10-28</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Kaii-%E8%B0%88%E7%94%9F%E6%B4%BB/" itemprop="url" rel="index"><span itemprop="name">Kaii 谈生活</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>988</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>1 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>前两篇，一篇是<a href="/2026/10/26/Daily_Posts/temporary-solutions-make-your-life/">判决</a>，一篇是<a href="/2026/10/27/Daily_Posts/temporary-is-a-strategy-not-default/">方法</a>，写完容易读出第三个错误结论：既然凑合最后会变成你的一生，那就什么都不能凑合。</p>
+<p>这个结论比前两篇都危险。它有个很体面的名字，叫”正式版崇拜”。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2026/10/28/Daily_Posts/when-to-be-sloppy/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://kaii.fun/2026/10/27/Productivity/AI/video-search-implementation/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Genius Kaii">
+      <meta itemprop="description" content="人和人的差距在归纳和讲课">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="楚不得">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2026/10/27/Productivity/AI/video-search-implementation/" class="post-title-link" itemprop="url">[AI] 视频检索怎么落地：从一帧到一个时间戳</a>
+        </h2>
+
+        <div class="post-meta">
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2026-10-27 10:43:19" itemprop="dateCreated datePublished" datetime="2026-10-27T10:43:19+08:00">2026-10-27</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Kaii-%E8%B0%88%E8%BD%AF%E4%BB%B6/" itemprop="url" rel="index"><span itemprop="name">Kaii 谈软件</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>1.7k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>2 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a href="/2021/03/08/Daily_Posts/How-to-search-a-video/">四年前那篇</a>只喊了口号，<a href="/2025/10/23/Productivity/AI/Idea-in-video-searching-with-LLM-OCR/">去年那篇</a>停在”系统架构设计：”就没了。今天把这半截补上——不谈愿景，只谈这个系统该怎么搭、哪里会炸。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2026/10/27/Productivity/AI/video-search-implementation/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://kaii.fun/2026/10/27/Daily_Posts/temporary-is-a-strategy-not-default/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Genius Kaii">
+      <meta itemprop="description" content="人和人的差距在归纳和讲课">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="楚不得">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2026/10/27/Daily_Posts/temporary-is-a-strategy-not-default/" class="post-title-link" itemprop="url">[AI] 凑合可以，但别让它变成默认值</a>
+        </h2>
+
+        <div class="post-meta">
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2026-10-27 09:34:12" itemprop="dateCreated datePublished" datetime="2026-10-27T09:34:12+08:00">2026-10-27</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Kaii-%E8%B0%88%E7%94%9F%E6%B4%BB/" itemprop="url" rel="index"><span itemprop="name">Kaii 谈生活</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>865</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>1 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>昨天写了<a href="/2026/10/26/Daily_Posts/temporary-solutions-make-your-life/">那篇有点丧的</a>，说”你所有的凑合构成了你的一生”。写完自己看着也不太舒服：它像判决书，不像方法。所以今天补一篇——知道这件事之后，到底该怎么办。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2026/10/27/Daily_Posts/temporary-is-a-strategy-not-default/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://kaii.fun/2026/10/26/Daily_Posts/temporary-solutions-make-your-life/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Genius Kaii">
+      <meta itemprop="description" content="人和人的差距在归纳和讲课">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="楚不得">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2026/10/26/Daily_Posts/temporary-solutions-make-your-life/" class="post-title-link" itemprop="url">[AI] 你所有的凑合，构成了你的一生</a>
+        </h2>
+
+        <div class="post-meta">
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2026-10-26 13:05:56" itemprop="dateCreated datePublished" datetime="2026-10-26T13:05:56+08:00">2026-10-26</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Kaii-%E8%B0%88%E7%94%9F%E6%B4%BB/" itemprop="url" rel="index"><span itemprop="name">Kaii 谈生活</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>717</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>1 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>干活的人大概都听过一句话：世界上没有比临时方案更长久的东西。</p>
+<p>一开始只是”先这样跑着”，后来它接上了真实的数据、真实的用户、真实的钱；再后来没人敢动它，因为已经没人完整知道它为什么能跑。等到某天它终于挂了，大家才发现：这个”过渡版本”，已经在一线服役了七年。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2026/10/26/Daily_Posts/temporary-solutions-make-your-life/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://kaii.fun/2026/10/16/Daily_Posts/fix-blog-env-20261016/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Genius Kaii">
+      <meta itemprop="description" content="人和人的差距在归纳和讲课">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="楚不得">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2026/10/16/Daily_Posts/fix-blog-env-20261016/" class="post-title-link" itemprop="url">[AI] 又修了一次博客的本地环境</a>
+        </h2>
+
+        <div class="post-meta">
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2026-10-16 14:26:46" itemprop="dateCreated datePublished" datetime="2026-10-16T14:26:46+08:00">2026-10-16</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Kaii-%E8%B0%88%E8%BD%AF%E4%BB%B6/" itemprop="url" rel="index"><span itemprop="name">Kaii 谈软件</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>608</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>1 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>想在自己的终端里直接敲一句 <code>hexo d -g</code> 就把文章推上去，结果发现这台机器上的构建环境早就烂了：依赖目录不在版本库里、代理指向一个没起来的端口、运行时和 git 又各有一堆版本。</p>
+<p>顺便记一笔，免得下次再从头摸一遍。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2026/10/16/Daily_Posts/fix-blog-env-20261016/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -418,13 +1144,6 @@
 
               <time title="Created: 2025-10-23 22:38:26" itemprop="dateCreated datePublished" datetime="2025-10-23T22:38:26+08:00">2025-10-23</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2025-10-27 11:58:33" itemprop="dateModified" datetime="2025-10-27T11:58:33+08:00">2025-10-27</time>
-              </span>
 
           <br>
             <span class="post-meta-item" title="Symbols count in article">
@@ -503,9 +1222,8 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2025-07-14 22:53:57 / Modified: 00:00:00" itemprop="dateCreated datePublished" datetime="2025-07-14T22:53:57+08:00">2025-07-14</time>
+              <time title="Created: 2025-07-14 22:53:57" itemprop="dateCreated datePublished" datetime="2025-07-14T22:53:57+08:00">2025-07-14</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -593,9 +1311,8 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2022-06-01 09:06:31 / Modified: 00:00:00" itemprop="dateCreated datePublished" datetime="2022-06-01T09:06:31+08:00">2022-06-01</time>
+              <time title="Created: 2022-06-01 09:06:31" itemprop="dateCreated datePublished" datetime="2022-06-01T09:06:31+08:00">2022-06-01</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -683,9 +1400,8 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2022-05-04 13:42:13 / Modified: 00:00:00" itemprop="dateCreated datePublished" datetime="2022-05-04T13:42:13+08:00">2022-05-04</time>
+              <time title="Created: 2022-05-04 13:42:13" itemprop="dateCreated datePublished" datetime="2022-05-04T13:42:13+08:00">2022-05-04</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -731,6 +1447,102 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2022/05/04/Daily_Posts/Youth-Day-2022/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://kaii.fun/2021/12/14/Productivity/3PP/Logging/Log4J2-RCE-Attack/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Genius Kaii">
+      <meta itemprop="description" content="人和人的差距在归纳和讲课">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="楚不得">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/12/14/Productivity/3PP/Logging/Log4J2-RCE-Attack/" class="post-title-link" itemprop="url">Log4J 风波， Log4Shell</a>
+        </h2>
+
+        <div class="post-meta">
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-12-14 13:15:04" itemprop="dateCreated datePublished" datetime="2021-12-14T13:15:04+08:00">2021-12-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-05-04 13:41:20" itemprop="dateModified" datetime="2022-05-04T13:41:20+08:00">2022-05-04</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/3PP/" itemprop="url" rel="index"><span itemprop="name">3PP</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>16k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>15 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>永远不要小看任何一个部件。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/12/14/Productivity/3PP/Logging/Log4J2-RCE-Attack/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -947,6 +1759,78 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://kaii.fun/2021/12/20/Productivity/3PP/Logging/Configure-Logback/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Genius Kaii">
+      <meta itemprop="description" content="人和人的差距在归纳和讲课">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="楚不得">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/12/20/Productivity/3PP/Logging/Configure-Logback/" class="post-title-link" itemprop="url">Logback 配置</a>
+        </h2>
+
+        <div class="post-meta">
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-12-20 16:23:43" itemprop="dateCreated datePublished" datetime="2021-12-20T16:23:43+08:00">2021-12-20</time>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>0</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>1 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://kaii.fun/2021/12/20/Productivity/3PP/Logging/Configure-Log4J/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -971,9 +1855,8 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2021-12-20 16:22:32 / Modified: 00:00:00" itemprop="dateCreated datePublished" datetime="2021-12-20T16:22:32+08:00">2021-12-20</time>
+              <time title="Created: 2021-12-20 16:22:32" itemprop="dateCreated datePublished" datetime="2021-12-20T16:22:32+08:00">2021-12-20</time>
             </span>
 
           <br>
@@ -1028,79 +1911,6 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://kaii.fun/2021/12/20/Productivity/3PP/Logging/Configure-Logback/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Genius Kaii">
-      <meta itemprop="description" content="人和人的差距在归纳和讲课">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="楚不得">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/12/20/Productivity/3PP/Logging/Configure-Logback/" class="post-title-link" itemprop="url">Logback 配置</a>
-        </h2>
-
-        <div class="post-meta">
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2021-12-20 16:23:43 / Modified: 00:00:00" itemprop="dateCreated datePublished" datetime="2021-12-20T16:23:43+08:00">2021-12-20</time>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="Symbols count in article">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>0</span>
-            </span>
-            <span class="post-meta-item" title="Reading time">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>1 mins.</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://kaii.fun/2021/11/30/Productivity/3PP/Vault-Engine/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1125,9 +1935,8 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2021-11-30 10:58:38 / Modified: 00:00:00" itemprop="dateCreated datePublished" datetime="2021-11-30T10:58:38+08:00">2021-11-30</time>
+              <time title="Created: 2021-11-30 10:58:38" itemprop="dateCreated datePublished" datetime="2021-11-30T10:58:38+08:00">2021-11-30</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1208,9 +2017,8 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2021-11-25 13:58:31 / Modified: 00:00:00" itemprop="dateCreated datePublished" datetime="2021-11-25T13:58:31+08:00">2021-11-25</time>
+              <time title="Created: 2021-11-25 13:58:31" itemprop="dateCreated datePublished" datetime="2021-11-25T13:58:31+08:00">2021-11-25</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1376,9 +2184,8 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2021-11-24 14:39:39 / Modified: 00:00:00" itemprop="dateCreated datePublished" datetime="2021-11-24T14:39:39+08:00">2021-11-24</time>
+              <time title="Created: 2021-11-24 14:39:39" itemprop="dateCreated datePublished" datetime="2021-11-24T14:39:39+08:00">2021-11-24</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1469,9 +2276,8 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2021-11-19 15:29:02 / Modified: 00:00:00" itemprop="dateCreated datePublished" datetime="2021-11-19T15:29:02+08:00">2021-11-19</time>
+              <time title="Created: 2021-11-19 15:29:02" itemprop="dateCreated datePublished" datetime="2021-11-19T15:29:02+08:00">2021-11-19</time>
             </span>
 
           <br>
@@ -1550,9 +2356,8 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2021-08-25 14:41:12 / Modified: 00:00:00" itemprop="dateCreated datePublished" datetime="2021-08-25T14:41:12+08:00">2021-08-25</time>
+              <time title="Created: 2021-08-25 14:41:12" itemprop="dateCreated datePublished" datetime="2021-08-25T14:41:12+08:00">2021-08-25</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1641,9 +2446,8 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2021-08-13 15:29:55 / Modified: 00:00:00" itemprop="dateCreated datePublished" datetime="2021-08-13T15:29:55+08:00">2021-08-13</time>
+              <time title="Created: 2021-08-13 15:29:55" itemprop="dateCreated datePublished" datetime="2021-08-13T15:29:55+08:00">2021-08-13</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1731,9 +2535,8 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2021-07-20 14:05:02 / Modified: 00:00:00" itemprop="dateCreated datePublished" datetime="2021-07-20T14:05:02+08:00">2021-07-20</time>
+              <time title="Created: 2021-07-20 14:05:02" itemprop="dateCreated datePublished" datetime="2021-07-20T14:05:02+08:00">2021-07-20</time>
             </span>
 
           <br>
@@ -1812,9 +2615,8 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2021-06-30 13:49:02 / Modified: 00:00:00" itemprop="dateCreated datePublished" datetime="2021-06-30T13:49:02+08:00">2021-06-30</time>
+              <time title="Created: 2021-06-30 13:49:02" itemprop="dateCreated datePublished" datetime="2021-06-30T13:49:02+08:00">2021-06-30</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1902,9 +2704,8 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2021-06-29 17:10:47 / Modified: 00:00:00" itemprop="dateCreated datePublished" datetime="2021-06-29T17:10:47+08:00">2021-06-29</time>
+              <time title="Created: 2021-06-29 17:10:47" itemprop="dateCreated datePublished" datetime="2021-06-29T17:10:47+08:00">2021-06-29</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -2065,6 +2866,95 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://kaii.fun/2021/04/25/Productivity/Coding/Scala/Scala-Reflect/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Genius Kaii">
+      <meta itemprop="description" content="人和人的差距在归纳和讲课">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="楚不得">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/04/25/Productivity/Coding/Scala/Scala-Reflect/" class="post-title-link" itemprop="url">Scala 反射机制</a>
+        </h2>
+
+        <div class="post-meta">
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-04-25 16:30:08" itemprop="dateCreated datePublished" datetime="2021-04-25T16:30:08+08:00">2021-04-25</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Language/" itemprop="url" rel="index"><span itemprop="name">Language</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>10</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>1 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>很秀。记录一下。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/04/25/Productivity/Coding/Scala/Scala-Reflect/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://kaii.fun/2020/08/18/Productivity/Coding/Bash/new-lines/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2161,96 +3051,6 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://kaii.fun/2021/04/25/Productivity/Coding/Scala/Scala-Reflect/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Genius Kaii">
-      <meta itemprop="description" content="人和人的差距在归纳和讲课">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="楚不得">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/04/25/Productivity/Coding/Scala/Scala-Reflect/" class="post-title-link" itemprop="url">Scala 反射机制</a>
-        </h2>
-
-        <div class="post-meta">
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2021-04-25 16:30:08 / Modified: 00:00:00" itemprop="dateCreated datePublished" datetime="2021-04-25T16:30:08+08:00">2021-04-25</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Language/" itemprop="url" rel="index"><span itemprop="name">Language</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="Symbols count in article">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>10</span>
-            </span>
-            <span class="post-meta-item" title="Reading time">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>1 mins.</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>很秀。记录一下。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/04/25/Productivity/Coding/Scala/Scala-Reflect/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://kaii.fun/2021/03/23/Productivity/Coding/Java/request-body-size/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2275,9 +3075,8 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2021-03-23 13:26:40 / Modified: 00:00:00" itemprop="dateCreated datePublished" datetime="2021-03-23T13:26:40+08:00">2021-03-23</time>
+              <time title="Created: 2021-03-23 13:26:40" itemprop="dateCreated datePublished" datetime="2021-03-23T13:26:40+08:00">2021-03-23</time>
             </span>
 
           <br>
@@ -2352,9 +3151,8 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2021-03-08 09:06:30 / Modified: 00:00:00" itemprop="dateCreated datePublished" datetime="2021-03-08T09:06:30+08:00">2021-03-08</time>
+              <time title="Created: 2021-03-08 09:06:30" itemprop="dateCreated datePublished" datetime="2021-03-08T09:06:30+08:00">2021-03-08</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -2446,9 +3244,8 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2021-02-08 16:22:48 / Modified: 00:00:00" itemprop="dateCreated datePublished" datetime="2021-02-08T16:22:48+08:00">2021-02-08</time>
+              <time title="Created: 2021-02-08 16:22:48" itemprop="dateCreated datePublished" datetime="2021-02-08T16:22:48+08:00">2021-02-08</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -2537,9 +3334,8 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2021-02-05 10:15:08 / Modified: 00:00:00" itemprop="dateCreated datePublished" datetime="2021-02-05T10:15:08+08:00">2021-02-05</time>
+              <time title="Created: 2021-02-05 10:15:08" itemprop="dateCreated datePublished" datetime="2021-02-05T10:15:08+08:00">2021-02-05</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -2581,6 +3377,86 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2021/02/05/Daily_Posts/Mi-Router-3-with-ASUS-firmware/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://kaii.fun/2020/12/31/Productivity/Coding/Protobuf/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Genius Kaii">
+      <meta itemprop="description" content="人和人的差距在归纳和讲课">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="楚不得">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/12/31/Productivity/Coding/Protobuf/" class="post-title-link" itemprop="url">Protobuf</a>
+        </h2>
+
+        <div class="post-meta">
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-12-31 15:14:08" itemprop="dateCreated datePublished" datetime="2020-12-31T15:14:08+08:00">2020-12-31</time>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>17</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>1 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>一个挺好玩的文件格式。也有一些坑。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/12/31/Productivity/Coding/Protobuf/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -2702,87 +3578,6 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://kaii.fun/2020/12/31/Productivity/Coding/Protobuf/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Genius Kaii">
-      <meta itemprop="description" content="人和人的差距在归纳和讲课">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="楚不得">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/12/31/Productivity/Coding/Protobuf/" class="post-title-link" itemprop="url">Protobuf</a>
-        </h2>
-
-        <div class="post-meta">
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-12-31 15:14:08 / Modified: 00:00:00" itemprop="dateCreated datePublished" datetime="2020-12-31T15:14:08+08:00">2020-12-31</time>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="Symbols count in article">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>17</span>
-            </span>
-            <span class="post-meta-item" title="Reading time">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>1 mins.</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>一个挺好玩的文件格式。也有一些坑。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/12/31/Productivity/Coding/Protobuf/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://kaii.fun/2020/12/30/Daily_Posts/End-of-2020/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2807,9 +3602,8 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-12-30 10:26:53 / Modified: 00:00:00" itemprop="dateCreated datePublished" datetime="2020-12-30T10:26:53+08:00">2020-12-30</time>
+              <time title="Created: 2020-12-30 10:26:53" itemprop="dateCreated datePublished" datetime="2020-12-30T10:26:53+08:00">2020-12-30</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -2899,9 +3693,8 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-12-29 15:01:27 / Modified: 00:00:00" itemprop="dateCreated datePublished" datetime="2020-12-29T15:01:27+08:00">2020-12-29</time>
+              <time title="Created: 2020-12-29 15:01:27" itemprop="dateCreated datePublished" datetime="2020-12-29T15:01:27+08:00">2020-12-29</time>
             </span>
 
           <br>
@@ -2930,6 +3723,95 @@
 
       
           
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://kaii.fun/2020/12/09/Daily_Posts/CPU-High-Ratio/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Genius Kaii">
+      <meta itemprop="description" content="人和人的差距在归纳和讲课">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="楚不得">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/12/09/Daily_Posts/CPU-High-Ratio/" class="post-title-link" itemprop="url">本机 CPU 高占用</a>
+        </h2>
+
+        <div class="post-meta">
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-12-09 16:54:49" itemprop="dateCreated datePublished" datetime="2020-12-09T16:54:49+08:00">2020-12-09</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Kaii-%E8%B0%88%E7%A1%AC%E4%BB%B6/" itemprop="url" rel="index"><span itemprop="name">Kaii 谈硬件</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>200</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>1 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>自从给本站迁移到 Kubernetes 并且加上一些 k8s 的框架产品后，机器的 CPU 始终非常高，得闲睇下？</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/12/09/Daily_Posts/CPU-High-Ratio/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -3021,96 +3903,6 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2018/09/12/WordPress/Full-site-SSL-done/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://kaii.fun/2020/12/09/Daily_Posts/CPU-High-Ratio/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Genius Kaii">
-      <meta itemprop="description" content="人和人的差距在归纳和讲课">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="楚不得">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/12/09/Daily_Posts/CPU-High-Ratio/" class="post-title-link" itemprop="url">本机 CPU 高占用</a>
-        </h2>
-
-        <div class="post-meta">
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-12-09 16:54:49 / Modified: 00:00:00" itemprop="dateCreated datePublished" datetime="2020-12-09T16:54:49+08:00">2020-12-09</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Kaii-%E8%B0%88%E7%A1%AC%E4%BB%B6/" itemprop="url" rel="index"><span itemprop="name">Kaii 谈硬件</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="Symbols count in article">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>200</span>
-            </span>
-            <span class="post-meta-item" title="Reading time">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>1 mins.</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>自从给本站迁移到 Kubernetes 并且加上一些 k8s 的框架产品后，机器的 CPU 始终非常高，得闲睇下？</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/12/09/Daily_Posts/CPU-High-Ratio/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -3247,9 +4039,8 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-12-03 15:14:03 / Modified: 00:00:00" itemprop="dateCreated datePublished" datetime="2020-12-03T15:14:03+08:00">2020-12-03</time>
+              <time title="Created: 2020-12-03 15:14:03" itemprop="dateCreated datePublished" datetime="2020-12-03T15:14:03+08:00">2020-12-03</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -3290,6 +4081,95 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2020/12/03/Productivity/Coding/Java/Java-Unit-Test/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://kaii.fun/2020/11/30/Productivity/Coding/Java/Java-Thread-Pool/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Genius Kaii">
+      <meta itemprop="description" content="人和人的差距在归纳和讲课">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="楚不得">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/11/30/Productivity/Coding/Java/Java-Thread-Pool/" class="post-title-link" itemprop="url">Java 线程池</a>
+        </h2>
+
+        <div class="post-meta">
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-11-30 17:34:22" itemprop="dateCreated datePublished" datetime="2020-11-30T17:34:22+08:00">2020-11-30</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Language/" itemprop="url" rel="index"><span itemprop="name">Language</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>1.1k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>1 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>在 ScheduledExecutorService 上折腾了半天，先记下来。后面再补充其他线程池。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/11/30/Productivity/Coding/Java/Java-Thread-Pool/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -3409,96 +4289,6 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://kaii.fun/2020/11/30/Productivity/Coding/Java/Java-Thread-Pool/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Genius Kaii">
-      <meta itemprop="description" content="人和人的差距在归纳和讲课">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="楚不得">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/11/30/Productivity/Coding/Java/Java-Thread-Pool/" class="post-title-link" itemprop="url">Java 线程池</a>
-        </h2>
-
-        <div class="post-meta">
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-11-30 17:34:22 / Modified: 00:00:00" itemprop="dateCreated datePublished" datetime="2020-11-30T17:34:22+08:00">2020-11-30</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Language/" itemprop="url" rel="index"><span itemprop="name">Language</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="Symbols count in article">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>1.1k</span>
-            </span>
-            <span class="post-meta-item" title="Reading time">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>1 mins.</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>在 ScheduledExecutorService 上折腾了半天，先记下来。后面再补充其他线程池。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/11/30/Productivity/Coding/Java/Java-Thread-Pool/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://kaii.fun/2020/11/24/Productivity/Basic/Tree/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -3523,9 +4313,8 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-11-24 11:11:22 / Modified: 00:00:00" itemprop="dateCreated datePublished" datetime="2020-11-24T11:11:22+08:00">2020-11-24</time>
+              <time title="Created: 2020-11-24 11:11:22" itemprop="dateCreated datePublished" datetime="2020-11-24T11:11:22+08:00">2020-11-24</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -3613,9 +4402,8 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-11-16 16:25:37 / Modified: 00:00:00" itemprop="dateCreated datePublished" datetime="2020-11-16T16:25:37+08:00">2020-11-16</time>
+              <time title="Created: 2020-11-16 16:25:37" itemprop="dateCreated datePublished" datetime="2020-11-16T16:25:37+08:00">2020-11-16</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -3695,9 +4483,8 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-11-16 10:22:31 / Modified: 00:00:00" itemprop="dateCreated datePublished" datetime="2020-11-16T10:22:31+08:00">2020-11-16</time>
+              <time title="Created: 2020-11-16 10:22:31" itemprop="dateCreated datePublished" datetime="2020-11-16T10:22:31+08:00">2020-11-16</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -3777,9 +4564,8 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-11-12 16:25:25 / Modified: 00:00:00" itemprop="dateCreated datePublished" datetime="2020-11-12T16:25:25+08:00">2020-11-12</time>
+              <time title="Created: 2020-11-12 16:25:25" itemprop="dateCreated datePublished" datetime="2020-11-12T16:25:25+08:00">2020-11-12</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -3867,9 +4653,8 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-10-27 13:13:22 / Modified: 00:00:00" itemprop="dateCreated datePublished" datetime="2020-10-27T13:13:22+08:00">2020-10-27</time>
+              <time title="Created: 2020-10-27 13:13:22" itemprop="dateCreated datePublished" datetime="2020-10-27T13:13:22+08:00">2020-10-27</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -3957,9 +4742,8 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-10-27 10:30:27 / Modified: 00:00:00" itemprop="dateCreated datePublished" datetime="2020-10-27T10:30:27+08:00">2020-10-27</time>
+              <time title="Created: 2020-10-27 10:30:27" itemprop="dateCreated datePublished" datetime="2020-10-27T10:30:27+08:00">2020-10-27</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -4040,9 +4824,8 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-10-27 10:30:15 / Modified: 00:00:00" itemprop="dateCreated datePublished" datetime="2020-10-27T10:30:15+08:00">2020-10-27</time>
+              <time title="Created: 2020-10-27 10:30:15" itemprop="dateCreated datePublished" datetime="2020-10-27T10:30:15+08:00">2020-10-27</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -4122,9 +4905,8 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-10-27 10:22:16 / Modified: 00:00:00" itemprop="dateCreated datePublished" datetime="2020-10-27T10:22:16+08:00">2020-10-27</time>
+              <time title="Created: 2020-10-27 10:22:16" itemprop="dateCreated datePublished" datetime="2020-10-27T10:22:16+08:00">2020-10-27</time>
             </span>
 
           <br>
@@ -4195,9 +4977,8 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-10-27 10:22:04 / Modified: 00:00:00" itemprop="dateCreated datePublished" datetime="2020-10-27T10:22:04+08:00">2020-10-27</time>
+              <time title="Created: 2020-10-27 10:22:04" itemprop="dateCreated datePublished" datetime="2020-10-27T10:22:04+08:00">2020-10-27</time>
             </span>
 
           <br>
@@ -4268,9 +5049,8 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-10-19 16:39:40 / Modified: 00:00:00" itemprop="dateCreated datePublished" datetime="2020-10-19T16:39:40+08:00">2020-10-19</time>
+              <time title="Created: 2020-10-19 16:39:40" itemprop="dateCreated datePublished" datetime="2020-10-19T16:39:40+08:00">2020-10-19</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -4350,9 +5130,8 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-10-19 09:50:13 / Modified: 00:00:00" itemprop="dateCreated datePublished" datetime="2020-10-19T09:50:13+08:00">2020-10-19</time>
+              <time title="Created: 2020-10-19 09:50:13" itemprop="dateCreated datePublished" datetime="2020-10-19T09:50:13+08:00">2020-10-19</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -4418,6 +5197,95 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://kaii.fun/2020/10/15/Productivity/Basic/CAP-Principle/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Genius Kaii">
+      <meta itemprop="description" content="人和人的差距在归纳和讲课">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="楚不得">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/10/15/Productivity/Basic/CAP-Principle/" class="post-title-link" itemprop="url">CAP 原则</a>
+        </h2>
+
+        <div class="post-meta">
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-10-15 15:43:33" itemprop="dateCreated datePublished" datetime="2020-10-15T15:43:33+08:00">2020-10-15</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Basic-Definitions/" itemprop="url" rel="index"><span itemprop="name">Basic_Definitions</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>528</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>1 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>很简单的一个原则，但是也梳理一下。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/10/15/Productivity/Basic/CAP-Principle/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://kaii.fun/2020/10/15/ACG/KGN/GTA5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -4442,9 +5310,8 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-10-15 10:46:20 / Modified: 00:00:00" itemprop="dateCreated datePublished" datetime="2020-10-15T10:46:20+08:00">2020-10-15</time>
+              <time title="Created: 2020-10-15 10:46:20" itemprop="dateCreated datePublished" datetime="2020-10-15T10:46:20+08:00">2020-10-15</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -4532,9 +5399,8 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-10-15 10:34:33 / Modified: 00:00:00" itemprop="dateCreated datePublished" datetime="2020-10-15T10:34:33+08:00">2020-10-15</time>
+              <time title="Created: 2020-10-15 10:34:33" itemprop="dateCreated datePublished" datetime="2020-10-15T10:34:33+08:00">2020-10-15</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -4598,96 +5464,6 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://kaii.fun/2020/10/15/Productivity/Basic/CAP-Principle/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Genius Kaii">
-      <meta itemprop="description" content="人和人的差距在归纳和讲课">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="楚不得">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/10/15/Productivity/Basic/CAP-Principle/" class="post-title-link" itemprop="url">CAP 原则</a>
-        </h2>
-
-        <div class="post-meta">
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-10-15 15:43:33 / Modified: 00:00:00" itemprop="dateCreated datePublished" datetime="2020-10-15T15:43:33+08:00">2020-10-15</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Basic-Definitions/" itemprop="url" rel="index"><span itemprop="name">Basic_Definitions</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="Symbols count in article">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>528</span>
-            </span>
-            <span class="post-meta-item" title="Reading time">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>1 mins.</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>很简单的一个原则，但是也梳理一下。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/10/15/Productivity/Basic/CAP-Principle/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://kaii.fun/2020/10/14/Productivity/Basic/Future-and-How-It-Works/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -4712,9 +5488,8 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-10-14 13:18:45 / Modified: 00:00:00" itemprop="dateCreated datePublished" datetime="2020-10-14T13:18:45+08:00">2020-10-14</time>
+              <time title="Created: 2020-10-14 13:18:45" itemprop="dateCreated datePublished" datetime="2020-10-14T13:18:45+08:00">2020-10-14</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -4803,9 +5578,8 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-10-12 14:56:04 / Modified: 00:00:00" itemprop="dateCreated datePublished" datetime="2020-10-12T14:56:04+08:00">2020-10-12</time>
+              <time title="Created: 2020-10-12 14:56:04" itemprop="dateCreated datePublished" datetime="2020-10-12T14:56:04+08:00">2020-10-12</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -4885,9 +5659,8 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-09-29 10:01:59 / Modified: 00:00:00" itemprop="dateCreated datePublished" datetime="2020-09-29T10:01:59+08:00">2020-09-29</time>
+              <time title="Created: 2020-09-29 10:01:59" itemprop="dateCreated datePublished" datetime="2020-09-29T10:01:59+08:00">2020-09-29</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -5066,9 +5839,8 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-09-23 13:27:34 / Modified: 00:00:00" itemprop="dateCreated datePublished" datetime="2020-09-23T13:27:34+08:00">2020-09-23</time>
+              <time title="Created: 2020-09-23 13:27:34" itemprop="dateCreated datePublished" datetime="2020-09-23T13:27:34+08:00">2020-09-23</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -5397,7 +6169,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/07/03/Productivity/Basic/My-View-on-TLS-SSL/" class="post-title-link" itemprop="url">TLS SSL 讲课笔记（没讲过）</a>
+            <a href="/2020/07/03/Productivity/Basic/My-View-on-TLS-SSL/" class="post-title-link" itemprop="url">[AI 补完] TLS SSL 讲课笔记（没讲过）</a>
         </h2>
 
         <div class="post-meta">
@@ -5426,14 +6198,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>511</span>
+              <span>3.3k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>1 mins.</span>
+              <span>3 mins.</span>
             </span>
 
         </div>
@@ -5650,9 +6422,8 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-06-15 13:19:13 / Modified: 00:00:00" itemprop="dateCreated datePublished" datetime="2020-06-15T13:19:13+08:00">2020-06-15</time>
+              <time title="Created: 2020-06-15 13:19:13" itemprop="dateCreated datePublished" datetime="2020-06-15T13:19:13+08:00">2020-06-15</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -5718,6 +6489,96 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://kaii.fun/2020/06/12/Daily_Posts/English-learning/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Genius Kaii">
+      <meta itemprop="description" content="人和人的差距在归纳和讲课">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="楚不得">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/06/12/Daily_Posts/English-learning/" class="post-title-link" itemprop="url">英语随手记</a>
+        </h2>
+
+        <div class="post-meta">
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-06-12 11:31:35" itemprop="dateCreated datePublished" datetime="2020-06-12T11:31:35+08:00">2020-06-12</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Kaii-%E8%B0%88%E8%AF%AD%E8%A8%80/" itemprop="url" rel="index"><span itemprop="name">Kaii 谈语言</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>886</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>1 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>一些不太清楚的词汇，看到就记下来，随时更新。
+老外并不太 care 你有没有语法错误，因为他们自己也不是 100% 的正确。我认为的区别就是人家能清楚地说出来，这个是 A 那个是 B, 而不是 I want this/that. 你讲中文还能嘴瓢呢，just speak out.</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/06/12/Daily_Posts/English-learning/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://kaii.fun/2020/06/11/Productivity/Coding/Scala/Scala-Cookbook-notebook/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -5742,9 +6603,8 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-06-11 13:29:32 / Modified: 00:00:00" itemprop="dateCreated datePublished" datetime="2020-06-11T13:29:32+08:00">2020-06-11</time>
+              <time title="Created: 2020-06-11 13:29:32" itemprop="dateCreated datePublished" datetime="2020-06-11T13:29:32+08:00">2020-06-11</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -5923,9 +6783,8 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-06-09 13:03:17 / Modified: 00:00:00" itemprop="dateCreated datePublished" datetime="2020-06-09T13:03:17+08:00">2020-06-09</time>
+              <time title="Created: 2020-06-09 13:03:17" itemprop="dateCreated datePublished" datetime="2020-06-09T13:03:17+08:00">2020-06-09</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -6917,7 +7776,7 @@
 
       
           <p>为了提高工作效率（偷懒）写的git自动rebase脚本</p>
-<p><span class="exturl" data-url="bWFpbHRvOiYjeDY3OyYjMTA1OyYjeDc0OyYjeDQwOyYjeDY3OyYjMTA1OyYjMTE2OyYjMTA0OyYjMTE3OyYjOTg7JiN4MmU7JiM5OTsmIzExMTsmIzEwOTs=">&#x67;&#105;&#x74;&#x40;&#x67;&#105;&#116;&#104;&#117;&#98;&#x2e;&#99;&#111;&#109;<i class="fa fa-external-link-alt"></i></span>:GeniusKaii/git_tool.git</p>
+<p><span class="exturl" data-url="bWFpbHRvOiYjMTAzOyYjMTA1OyYjeDc0OyYjeDQwOyYjeDY3OyYjMTA1OyYjeDc0OyYjeDY4OyYjeDc1OyYjOTg7JiN4MmU7JiM5OTsmI3g2ZjsmIzEwOTs=">&#103;&#105;&#x74;&#x40;&#x67;&#105;&#x74;&#x68;&#x75;&#98;&#x2e;&#99;&#x6f;&#109;<i class="fa fa-external-link-alt"></i></span>:GeniusKaii/git_tool.git</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2018/09/07/WordPress/auto-git-rebase-tool/#more" rel="contents">
@@ -7089,19 +7948,19 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">107</span>
+          <span class="site-state-item-count">87</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-count">11</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-count">34</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -7155,15 +8014,15 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">84k</span>
+    <span title="Symbols count total">72k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">1:16</span>
+    <span title="Reading time total">1:06</span>
 </div>
   <div class="powered-by">Powered by <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl theme-link" data-url="aHR0cHM6Ly90aGVtZS1uZXh0Lm9yZw==">NexT.Gemini</span>. Running on <span class="exturl theme-link" data-url="aHR0cHM6Ly9wYWdlcy5naXRodWIuY29tLw==">Github Pages</span>.
-  </div><script color="0,0,255" opacity="0.5" zIndex="-1" count="99" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>
+  </div>
 
 
         
