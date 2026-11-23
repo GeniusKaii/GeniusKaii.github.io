@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>[AI] 黎曼猜想被 AI 攻下之后，和我有什么关系 · 楚不得</title>
+  <meta name="description" content="人和人的差距在归纳和讲课">
+  
+<link rel="stylesheet" href="/css/style.css">
+<link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+<meta name="theme-color" content="#100a18">
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+<body>
+  <header class="top">
+    <div class="top-in">
+      <a class="brand" href="/">
+        <span class="brand-mark">楚不得</span>
+        <span class="brand-sub">Genius Kaii</span>
+      </a>
+      <nav class="nav">
+        <a href="/">首页</a>
+        <a href="/archives/">归档</a>
+        <a href="/categories/">分类</a>
+        <a href="/about/">关于</a>
+      </nav>
+      <div class="search">
+        <input type="search" id="q" class="search-in" placeholder="搜文章…" autocomplete="off" aria-label="搜索文章">
+        <button type="button" class="search-clear" id="qClear" aria-label="清空" hidden>×</button>
+      </div>
+    </div>
+    <div class="search-panel" id="qPanel" hidden>
+      <div class="search-state" id="qState"></div>
+      <ul class="search-list" id="qList"></ul>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <article class="post">
+  <header class="post-head">
+    <h1 class="post-title">[AI] 黎曼猜想被 AI 攻下之后，和我有什么关系</h1>
+    <div class="post-meta">
+      <time datetime="2026-11-23T05:45:00.000Z">2026-11-23</time>
+      
+      
+        <span class="meta-sep">·</span>
+        
+          <a href="/categories/Kaii-%E8%B0%88%E8%BD%AF%E4%BB%B6/" class="meta-cat">Kaii 谈软件</a>
+        
+      
+    </div>
+  </header>
+
+  <div class="post-body">
+    <p>11 月 20 日，Anthropic 的数学家 Levent Alpöge 在个人网站上说，他和 Claude 一起找到了黎曼猜想的证明，连更强的广义黎曼猜想一起解决了。这事到现在还没被数学界正式确认，陶哲轩说验证需要时间。</p>
+<p>但它足够让我回头翻自己写过的东西——毕竟我一个数学本科出身、数学成绩稀烂的人，居然也和这个猜想沾一点边。</p>
+<a id="more"></a>
+
+<h3 id="先说清楚发生了什么"><a href="#先说清楚发生了什么" class="headerlink" title="先说清楚发生了什么"></a>先说清楚发生了什么</h3><p>把事实和传闻分开：</p>
+<ul>
+<li>公开的是一份 4 页说明，加上约 1700 万行 Lean 形式化证明代码，分 14 个压缩包。</li>
+<li>那份 25 万页的文字证明<strong>没有公开</strong>，因为太长，读不了。</li>
+<li>Lean 的两个组织说已经完成独立核验，但数学界的广泛审阅还没开始。</li>
+<li>几乎同时，美国数学学会主席公布了一份 940 页的纯人工证明草稿，是另一位数学家研究了 12 年的成果。</li>
+</ul>
+<p>所以准确的表述是「声称证明，待验证」，不是「已证明」。这个区别很重要，重要到决定我怎么看下面这些事。</p>
+<h3 id="我唯一亲手碰过的部分：RSA"><a href="#我唯一亲手碰过的部分：RSA" class="headerlink" title="我唯一亲手碰过的部分：RSA"></a>我唯一亲手碰过的部分：RSA</h3><p>前阵子补完过一篇 <a href="/2020/07/03/Productivity/Basic/My-View-on-TLS-SSL/">TLS 讲课笔记</a>，里面讲 RSA。RSA 的安全性挂在一句话上：把两个大素数乘起来容易，把乘积拆回两个素数极难。</p>
+<p>那句话背后就是素数分布问题。黎曼猜想说的正是素数分布有多规律——它不直接告诉你「怎么分解」，但它描述的是一整套我们依赖的「素数看起来足够随机」的假设的底层结构。</p>
+<p>所以如果这个证明成立，理论上受影响的不是「RSA 明天就能被破解」。数学证明和工程攻击之间隔着巨大的距离，就像知道某种材料的所有物理性质，不等于你能造出那把刀。但「我们以为的随机」如果被证明是「深度规律的」，那这类安全性论证的地基会开始晃。</p>
+<p>我在那篇笔记里写过，讲 TLS 最容易犯的错是上来就讲数学，听众三分钟就掉线。现在看，那句话依然成立——只是这层数学这次自己走上了台。</p>
+<h3 id="十三年前那句话"><a href="#十三年前那句话" class="headerlink" title="十三年前那句话"></a>十三年前那句话</h3><p>2013 年刚被华南理工数学与信息类录取时，我写过一段专业介绍，里面有一句：「计算机科学是以数学为奠基石的。」</p>
+<p>当时我大概只是把它当成招生简章里的话抄下来。十三年过去，这句话在黎曼猜想这件事上被完整地演示了一遍——一次纯粹的数论突破，靠的是一套形式化验证工具，最后影响的是密码学的地基。</p>
+<p>而我恰好是那个「数学没学明白、后来转头去写代码」的样本。这件事让我有点复杂：我最弱的那部分，恰恰是这次事件里最核心的部分。</p>
+<h3 id="一个我现在才想明白的点"><a href="#一个我现在才想明白的点" class="headerlink" title="一个我现在才想明白的点"></a>一个我现在才想明白的点</h3><p>我最在意的不是「AI 证明了什么」，而是<strong>它怎么被接受的</strong>。</p>
+<p>1700 万行代码，没人能读完。Lean 能验证每一步都对，但「形式化验证通过」和「人类理解了」是两件事。邓煜那句话我印象很深：「干到 500 页之前看都不看。」</p>
+<p>也就是说，我们正在进入一个阶段：<strong>结论可以由机器保证正确，但没人能解释为什么正确</strong>。这在工程上其实很常见——线上跑了三年的服务，你未必能说清每一个分支——只是这次发生在数学最核心的地方。</p>
+<p>对一个每天都在跟别人的系统打交道的人来说，这个处境我太熟了：我知道它能跑，我不完全知道它为什么能跑，而我必须在它出事之前想办法知道。</p>
+<h3 id="所以和我有什么关系"><a href="#所以和我有什么关系" class="headerlink" title="所以和我有什么关系"></a>所以和我有什么关系</h3><p>坦白说，短期没有。黎曼猜想不会影响我明天要部署的中间件，也不会让某个三方接口少一个字段。</p>
+<p>长期有两层：一层是密码学，那是我这行绕不开的地基；另一层更贴身——如果「机器能证明人理解不了的东西」成为常态，那我这种靠理解系统吃饭的人，价值坐标要重新找。</p>
+<p>以前我写过一篇<a href="/2025/07/15/Productivity/AI/AI-works/">向 AI 发起进攻</a>，说的是当年因为数学太差没敢往 AI 走。现在回头看，那时候我以为的门槛是数学，其实门槛是「能不能啃下别人啃不动的东西」。AI 把这道门槛挪到了别处，但门槛还在。</p>
+<p>这次事件真正的信息量，大概不是「AI 多强」，而是「验证和理解正在分家」。谁能在分家的两端都站住，谁就还有位置。</p>
+
+  </div>
+
+    
+  
+    <section class="cite">
+      
+
+      
+        <div class="cite-group">
+          <h3 class="cite-title">
+            <span class="cite-dot cite-out"></span>
+            这篇引用了 1 篇
+          </h3>
+          <ul class="cite-list">
+            
+              <li>
+                <a href="/2020/07/03/Productivity/Basic/My-View-on-TLS-SSL/">
+                  <span class="cite-d">2020-07-03</span>
+                  <span class="cite-t">[AI 补完] TLS SSL 讲课笔记（没讲过）</span>
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      
+
+      
+    </section>
+  
+
+
+  
+    <nav class="post-pager">
+      
+      
+        <a href="/2026/11/23/Daily_Posts/build-success-is-not-correct/" class="pager-item pager-next">
+          <span class="pager-k">下一篇 →</span>
+          <span class="pager-t">[AI] 构建成功，不代表结果正确</span>
+        </a>
+      
+    </nav>
+  
+
+  
+</article>
+
+  </main>
+
+  <footer class="foot">
+    <div class="foot-line">
+      <span class="foot-dot"></span>
+      <span>楚不得 · Genius Kaii</span>
+      <a href="/hidden/" class="foot-room" title="受保护的入口">✦</a>
+    </div>
+    <div class="beian">
+      <a href="https://beian.miit.gov.cn" target="_blank" rel="noopener">沪ICP备19045992号</a>
+      <span class="beian-sep">·</span>
+      <a href="https://beian.mps.gov.cn/portal/registerSystemInfo?recordcode=31011802004234" target="_blank" rel="noopener" class="beian-gongan">
+        <img src="/images/gong_an.png" alt="" class="beian-icon">沪公网安备 31011802004234号
+      </a>
+    </div>
+  </footer>
+
+  <script src="/js/search.js" defer></script>
+</body>
+</html>
