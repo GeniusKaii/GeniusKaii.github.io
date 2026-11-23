@@ -104,7 +104,7 @@
 <p>&lt;TBD 这些需要挖 code，后面补上！&gt;</p>
 <h2 id="问题的解决"><a href="#问题的解决" class="headerlink" title="问题的解决"></a>问题的解决</h2><p>参考 GitHub 提交：<a href="https://github.com/apache/logging-log4j2/commits/release-2.x?after=57cf5cd074dee122298f9e4853777a640ad8826c+279&branch=release-2.x" target="_blank" rel="noopener">apache/logging-log4j2</a>， 12 月 6 号左右</p>
 <p>&lt;TBD 这些需要挖 code，后面补上！&gt;</p>
-<h1 id="尝试复现"><a href="#尝试复现" class="headerlink" title="尝试复现"></a>尝试复现</h1><p>试一下在自己的机器上进行漏洞攻防！（首先按照这一篇配好 <code>log4j</code>：<a href="/onepiece-hexo/2021/12/20/Productivity/3PP/Logging/Configure-Log4J/">Log4J 配置</a>）</p>
+<h1 id="尝试复现"><a href="#尝试复现" class="headerlink" title="尝试复现"></a>尝试复现</h1><p>试一下在自己的机器上进行漏洞攻防！（首先按照这一篇配好 <code>log4j</code>：<a href="/2021/12/20/Productivity/3PP/Logging/Configure-Log4J/">Log4J 配置</a>）</p>
 <p>这里复现主要是通过测试 JNDI 对外部域名的访问记录，如上文所言，只要防御方能访问攻击方指定的特定网站，那么理论上攻击方就可以执行任何命令。具体测试方法：对一个 POST 方法，传入一个包含外部域名的 JNDI 命令，并观察外部域名网站的调用记录。如果对机器发送 POST 请求后，外部域名网站有访问记录，那么就可以视为本机器有此漏洞。</p>
 <p>外部域名站由 <a href="http://www.dnslog.cn/" target="_blank" rel="noopener">dnslog.cn</a> 提供。该站每次可以随机生成一个子域名，并记录全世界对这个子域名的访问记录。（当然此方法不是很精确，如果有其他人跟你 roll 到同一个随机域名进行测试，那就不好说了。）</p>
 <h2 id="Log4J-1-x"><a href="#Log4J-1-x" class="headerlink" title="Log4J 1.x"></a>Log4J 1.x</h2><p>首先引入 maven 依赖：</p>
@@ -168,6 +168,35 @@
 
 
   </div>
+
+    
+  
+    <section class="cite">
+      
+
+      
+        <div class="cite-group">
+          <h3 class="cite-title">
+            <span class="cite-dot cite-out"></span>
+            这篇引用了 1 篇
+          </h3>
+          <ul class="cite-list">
+            
+              <li>
+                <a href="/2021/12/20/Productivity/3PP/Logging/Configure-Log4J/">
+                  <span class="cite-d">2021-12-20</span>
+                  <span class="cite-t">Log4J 配置</span>
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      
+
+      
+    </section>
+  
+
 
   
     <nav class="post-pager">
