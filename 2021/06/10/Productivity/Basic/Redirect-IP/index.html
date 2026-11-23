@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>定向转发 IP 请求 · 楚不得</title><meta name="robots" content="noindex">
+  <title>定向转发 IP 请求 · 楚不得</title>
   <meta name="description" content="人和人的差距在归纳和讲课">
   
 <link rel="stylesheet" href="/css/style.css">
@@ -47,28 +47,31 @@
   </header>
 
   <div class="post-body">
-    <p>干货：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo iptables -t nat -A OUTPUT -d [REQUEST_IP] -j DNAT --to-destination [TARGET_IP]</span><br></pre></td></tr></table></figure>
-
-<a id="more"></a>
-
-<p>参考：<a href="https://www.cnblogs.com/EasonJim/p/7589394.html" target="_blank" rel="noopener">iptables实现IP地址重定向（转发）</a></p>
-<h4 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h4><p><a href="https://kaii.fun/onepiece-hexo/2020/06/04/Hello-Klog/">前文</a>介绍过，本站目前是架在阿里云的一台云服务器上，配置是 1 核 2G，CPU 性能基线 20%（也就是只有 0.2 个核）。很寒碜吧，能跑起来 Kubernetes 平台和本博客以及一些奇怪的 service 已经很不错了……</p>
-<p>随着奇奇怪怪的 service 越来越多，博文资源越来越多（虽然一共也没几篇），机器逐渐不够用了^[1]^，经常出现 docker 进程消失，导致整个站宕机。所以呢，根据调优不如加钱^[2]^原则，我又在腾讯云租了一台机器，配置是 2 核 4G。</p>
-<p>接下来要做的就是<code>kubeadm join</code>。</p>
-<p>果然出问题了。</p>
-<p>这些云服务商一般都会提供一个公网 IP 和一个内网 IP，服务商为了省流，默认 traffic 都是尽量走内网网段，有需要的再映射到外网网段。比如我阿里云的机器搭建 Kubernetes 的时候主机 IP/Port 就都在内网上，所以从腾讯云连过去的时候，哦豁，不行了。</p>
-<p>好在他们提供了内外网端口映射，所以我只需要在腾讯云机器上把所有 request 里的的阿里云内网 IP 转换成阿里云外网 IP，理论上就可以工作了。</p>
-<p>流程图如下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">flow</span><br><span class="line">st &#x3D;&gt; start: Start</span><br><span class="line">op&#x3D;&gt;operation: Your Operation</span><br><span class="line">cond&#x3D;&gt;condition: Yes or No?</span><br><span class="line">e&#x3D;&gt;end</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">st-&gt;op-&gt;cond</span><br><span class="line">cond(yes)-&gt;e</span><br><span class="line">cond(no)-&gt;op</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-<h4 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h4><p>[1] 应该是哪里有 bug 导致 docker 进程被杀，用 top 命令看硬件资源并不紧张。</p>
-<p>[2] 名人名言，Genius Kaii 说的。</p>
-<!-- flag of hidden posts -->
+    <div class="hbe hbe-container" id="hexo-blog-encrypt"
+     data-hbe-format="4"
+     data-wpm="密码不对，再试一次"
+     data-whm="密码不对，再试一次"
+     data-salt="88593216de5686e73e6f25cc6db5f322b9d5566f96103566853da8b8dafe4829"
+     data-nonce="f244648c42453d3e7d5fb774"
+     data-kdf-iterations="250000"
+     data-auto-save="true">
+  <script id="hbeData" type="hbeData">
+    5a37f1ae38571aea8662fd24fbfccb0d3b3c53889b46a7f68aea51cf97f857b87e06db63a932ef5bb18943e2c2dcacb9181f7f603f484725c4fe19f90c01998d7b3e5df2c192bb7b24ec9d4fda20aa8c0976aea23753157f6d0cc6534eb9d33416f946a31d3faafa5feeee9a72f2ed8b69f74ba83c9d6e0728850a28e1a1b8f01ac809b5ce3b81b5011e27984b44959aaef1d424e51cbec36e4399c8ee72731ffb00a325c8cb0901fe05fa126f1585d3adf31c734afd69bf4006996d4a95539bdeeb599ed3c50606751df602be9a060ad64434bcede7b2db1d141cb0ab1b582dd0d5772dbf560953533c45e11c41382f9569dcda559c49b8d6fb05711917477ab3dc4618d7645f271e8f1d26c66941b74e95b4d2de70698b98eae52c8a8464abfa9b62ab9aacfdf77516ee30c0d847b6df383cfe902f203b101c9b0e3a8e28b0134ba7090443541c9a43b7dfa64c509c5951a72ea0983b5a0a459295ddfbb7c183045a4a5c72d3d160f53a758be427a91371f7384864fa8b461495e84427488f9635cc81d613b759a0571169b795f471beddbc42793b5735c32b39c1be8972838c7921fae09ac0d039c5620b4c9f9399d667b4a20ab89410520f1e247602a84227934f88f34a34be45c717f84e549a689c510ca941156cf70f07309a4873e0a0d096f3b4e42cc3f4e15b78e865420a979cf09e679f515784d4d3c967397684e97e0a6782e0b3e0c6e684175e1270e62b28f9b4f990c8fcf366eea0e5971e77751e14e49219d5a689b3c26233a01b53b17536faae9d5c84ba93aea5152b0f8cecb9e2e26d223addc3ca27fdfab3f633e15428d2c99c37bb23fb7572d8dc6e5b31fe34c05029dd416aa9dd6f8c2bccdc313aa403d09f925fd4cfd1bdf43459588fdc64aa81e204f312335bd36bbcf7add23b616e66e43e70b9e8b773f7de2b98799776ae251ccc0b5b771d2f12100b38904e6c9b0e35cc81a4972de32e9abaed961c20a9de6e0ec7c05b2e26eab07d45119653a2e5e2457fd8576cb2983019da18573ec1cfd44d1f510a2d79ee5fa6d67e44aa98bee66ba4d51509f0c54f05e778883c6ab3b66befeebb36a62e2a9c3e10280fbb6a66aad35022b3228e3603fe679f0196df592f4b256e5edeea6802959e962a8706cd816793274f9d19572fdfbdbc8328f127fefbcb6fca48a43412df21143119de67f32745e5919bd99d712f1f8382d20d74020b6bfa6c0cc5e42ddb0bd1d8f67f0b13e622e274be41964f75b572debf03825c47e268494fbd0b5e1b39ca64d79b3e8ac052e32777b91c7cdad012727f699ee06b57fa3bc220a54c488c4fcb3a0aade2235558cab7c0445dcfa8fa6864c106743ef4c3ff035ef2f74c2c81bc6db073d42ca018e17c24317669c61399d66aabae51f7bdfe64c9556d8703fd388151ce2b3575dd5d2e4c062e2098c7c0c079def884bc5ca5c6c8103c9c035b6c3effdf2a50b2147421fbff37d97257e77bcd440e56e762c187c9b0a6236565dccd4e791eb5426be689053a326c392fd66354e7184c0b9ee4d6b2559410a0b295d944ff9a287245b894d90a7da85fcb2ee97f1045d02221025a293355d0e35298e8b1cb0a94abe6f8c40e741683d5a6f6bd0b14de81928ca5b3893a65473dec586cc87d949b3b4f9406ac03b16c7689cfee4f09fc0c59ecaf054ef72bf3ed18c7447b32e1125c7722990792d7da6c27de241a25861a6d1ccd9374f4f4c5084ae8342938442eb990a562cda1b16f98f141e482f535beede01e4baab2095bc8a9eb1aa191b8726859dadfb1b1bc74601b42ae14f8a39e8c2d67f22d7ae504918c714f9dc9773cbd3662910c5278942d7f5b124ff4073620cc8fe78c8b5701e38873d4ec16b7fa47b07c63d09be4db2c3c2daa158a07e8e54b843243c06fb4074005a8e1270ba72c51bae614cd37e449d91132ec45d284877f195da56476eb894b0995d4cc8711a7d65e557535e80b37125cc89b93b759f432b817a74e98e52f525035fe4d6f575caacf7c3fb7a6e3dc21688b9789266cc551507f32b7d98365e1e400ec293e1ffbf14c3cb0c25ef1b73e7bf186d0a24cc01ec700c8585838cc629f7eb733afc83a07827bd1ad6fb0a109c5361ae23a447e4d3f6efba5ba6740428ac6f050ac7f8147bfd06e62619f4ac24d6b682b69226962ce6fa81124bb605ff4df64b43b233f1941e888992fa2174191285166a719d8dc3c9d42e5012203aa208c6eebd9f7594e8638015122e3b9b6e8621353b9945f6d9571b0b01e33c0789f519c9f058a74b3f4e4543f549321701b3d488a253404e4c3b84581743253e1457678004cc2b2b49c3884208e46c2f859350db092231b88e2d9f904d81ca4cc3f7673ea6d3e898151e2d12ccf9c767810f79ac0573fed830a9c008d163fa810332810b2bd9bb89e3c0118b0a31638731d8a6a3460ce9814cabda20cc4ed6f02d90cd0ac5fc5388035216957cf4ea41ef9004be536baa188eab42418c63c21bd5c34b1d620acbf8c20265811874098d27745697763050632fca6c75d4157dd5d7ee2f5c23325880eeb99964902324eae6793c8c129e3b8030c0d095d40732b5d63d8ef751593f82b3c9fad229a7868ade3ec6f8625ff31be873dc921fdd1a1def72f0d49695015559147b3fabe1b1bb120ef7e1b09335bd20297f407be84e54266e3fb199963b35cee2cf667906412cf4b5c6654edeedab6c8dd7b022fb25b696643b5fa33358b501b9a5ac945b7b79bd1ae61594f5c3e8a2e3d740f6cc46efbe081dc927bb926e1e1c0856547c84ec3f04951f93c4db15bae49d1db1a9e2b5d7f3804bfeb60cb9a1d5bc23c4bbebb9f051c888931b45aacee2c9da2277f74e3c6a7439cc3d113df2e380d4af4233b879627c34d35d9e8b931118bdad9cd640b11c5126096e42c621b25c947fb212bf181d898ae95e8c350d3f3de93bc3466c72e884cdc26133898110eacc6f9c1e253d23cf718fe1f3dfbed1e177665b6df82d21aebcbed77b8ccab5c81e712a7edb0ad3574dd2266cc87b9ec9aa3a83a5261547c446848b978acd5f9707c7b004ce3387178c993f8911c585ded4d9b59aa9b5ff131917caf02e81d3e38734c40e077bc636c10fa863f4652b7104789e1e656eaeaf7f36613795a1e03513e2daba8285d5070033d2eb48b8ebdcce76b0ac74e1b38f20a143f6032895c625f11de4801eaf39b8d094380416ce0c2093f3bd59c33a630cc2b379ed19a72fd54910df662d21929affdb35427eccdfae524b3dc9ba04e2de484a8c283eb43f6665b9621bad722052ef750597db331e1cb860e613836bb133e260ab4a9f25a52056f32197160915a7b1b7d1881dc113489f49a7154095599f7967eb4100217e09dd754a122c4373b346815293c5a605e7dd7275a392fb8d912d7173b008888dc16b524798f502b381f89f61697be8899a82268234d74e0ca7f0bcc9af4eda67ab00b9db0d8201b82c30d58721de368ebfbc3676a4fecca77950354cf886b7251e669564fdbc109ba047979721b4206e79dd9fa6e141c6421c42c3f0b1671238045ed906b9b0e9dffdc4a71ec50fa8361cb5baf2e41d2eda4f56e1ffd38e6493f5ee5d6032dbf05d6b364c5d0699c8591fa2c75ef321b7de8f4526840b71d1172602116ef10ea7f8da4e8b34ab6775270cf214f54cb28bd1e9e06f78908e129a960cb9fb926468170fb6de48320044e842057eab0f188b46a91da3aa59111fd9b538c4668f228b6b49aead1d4cef4a2f279ac7496f38c1c85f87aeab8b2fcee94ec56678ba7ec8379acc055dfd1d97ac7d4eab88409123064c5061bf3034594f0f926344762939b53249bc19d9e2955f5193b3de70169e5b9ce11df561a60b2c95faa4e20a409162169f8345628501e50d483d60e42b9b98fa3ed054c9c2ff633b18f2e1b3f83e78063d01e08c752b0a639184c60fea7863a6a681573cb4f78c7d44d046bbf1911bfafb60c1f160e112d51119d9feb378abbc3ac7bcc5cc9511d5129996870edcfb86c637149977f16f284747f832c79d551f859a00e8677146106249889cdef09380dfd146d92858bcf3d5c038834a3d6b8a95e161645a8b1b25ce3a0c031df825c1a88631d6e669cec03a3d6e9637ddbe72b92e0dfe99d7efa42d4e0e6573321e4007727f489104bf160251b0af725022b6c3961882d758d55ac5d1f3bae9a1746ec2a5c08feca5919ca4e34ba4b563b539dd8aa45fddd6010433bf38ad008fd151ebe907d2ec6ef3132c4344913313273c209e416965999a39c3d552f024bc76af2e1
+  </script>
+  <div class="hbe hbe-content">
+    <form id="hbeForm" class="hbe hbe-form">
+      <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">受保护的文章</span>
+      </label>
+    </div>
+      <button class="hbe hbe-button" type="submit">打开</button>
+      <div class="hbe hbe-error" role="alert" aria-live="polite"></div>
+    </form>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.a3b9f59caa.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">
   </div>
 
     
