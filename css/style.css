@@ -581,22 +581,22 @@ a:hover {
 }
 .fold-list {
   margin: 0 0 20px;
+  border-top: 1px solid var(--line);
 }
 .fold {
   border-bottom: 1px solid var(--line);
   margin: 0;
 }
-.fold:first-child {
-  border-top: 1px solid var(--line);
-}
 .fold-head {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 15px 2px;
+  gap: 14px;
+  padding: 18px 4px;
   cursor: pointer;
   list-style: none;
   user-select: none;
+  border-radius: 8px;
+  transition: background 0.12s ease;
 }
 .fold-head::-webkit-details-marker {
   display: none;
@@ -604,22 +604,47 @@ a:hover {
 .fold-head::marker {
   content: '';
 }
-.fold-head::before {
-  content: "";
-  width: 15px;
-  height: 7px;
+.fold-head:hover {
+  background: #f7f3fc;
+}
+.fold-year {
+  font-size: 20px;
+  font-weight: 650;
+  color: var(--purple-deep);
+  letter-spacing: 0.02em;
+  font-variant-numeric: tabular-nums;
+}
+.fold-meta {
+  font-size: 12.5px;
+  color: var(--ink-faint);
+  background: #f2ecfa;
+  padding: 2px 9px;
+  border-radius: 20px;
+  font-variant-numeric: tabular-nums;
+}
+.fold-arrow {
+  margin-left: auto;
+  width: 11px;
+  height: 11px;
+  border-right: 1.8px solid var(--ink-faint);
+  border-bottom: 1.8px solid var(--ink-faint);
+  transform: rotate(45deg) translateY(-2px);
+  transition: transform 0.18s ease, border-color 0.18s ease;
   flex: 0 0 auto;
-  background: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 15 8' fill='none' stroke='%23988ba8' stroke-width='1.7' stroke-linecap='round'%3E%3Cpath d='M1 1l6.5 5.5L14 1'/%3E%3C/svg%3E") no-repeat center/contain;
-  transition: transform 0.16s ease;
 }
-.fold[open] .fold-head::before {
-  transform: rotate(180deg);
+.fold[open] .fold-arrow {
+  transform: rotate(225deg) translateY(-2px);
+  border-color: var(--purple);
 }
-.fold-head:hover .year-num {
-  color: var(--purple);
+.fold[open] .fold-head {
+  background: #faf7fe;
+  border-bottom: 1px solid var(--line);
+}
+.fold[open] .fold-head:hover {
+  background: #f5f0fc;
 }
 .fold .list {
-  padding: 0 0 10px 27px;
+  padding: 8px 0 14px 16px;
 }
 .search {
   position: relative;
@@ -768,10 +793,14 @@ a:hover {
     max-height: 56vh;
   }
   .fold-head {
-    padding: 13px 2px;
+    padding: 15px 3px;
+    gap: 10px;
+  }
+  .fold-year {
+    font-size: 18px;
   }
   .fold .list {
-    padding-left: 22px;
+    padding: 6px 0 12px 12px;
   }
   .wrap {
     padding: 26px 16px 60px;
