@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Serializable 序列化 · 楚不得</title>
+  <title>[AI 补完] Serializable 序列化 · 楚不得</title>
   <meta name="description" content="人和人的差距在归纳和讲课">
   
 <link rel="stylesheet" href="/css/style.css">
@@ -44,13 +44,18 @@
       <time datetime="2020-06-15T06:03:26.000Z">2020-06-15</time>
       
         <span class="meta-sep">·</span>
-        <span class="meta-updated">修改于 <time datetime="2020-12-30T16:00:00.000Z">2020-12-31</time></span>
+        <span class="meta-updated">修改于 <time datetime="2026-11-24T06:20:00.000Z">2026-11-24</time></span>
       
       
         <span class="meta-sep">·</span>
         
           <a href="/categories/Basic-Definitions/" class="meta-cat">Basic_Definitions</a>
         
+      
+      
+      
+        <span class="meta-sep">·</span>
+        <span class="list-badge list-badge-aigc-done">AI 补完</span>
       
     </div>
   </header>
@@ -63,22 +68,117 @@
 
 <h3 id="什么是序列化"><a href="#什么是序列化" class="headerlink" title="什么是序列化"></a>什么是序列化</h3><p>把<strong>对象</strong>转换为<strong>字节序列</strong>的过程称为对象的序列化。<br>把<strong>字节序列</strong>恢复为<strong>对象</strong>的过程称为对象的反序列化。</p>
 <p>也就是说，把内存里的 Object 写成硬盘上的文件进行持久化保存，要用的时候再取出来。<br>或者，将对象转换成字节序列（二进制）后在网络上进行传输。</p>
-<h3 id="什么东西需要序列化"><a href="#什么东西需要序列化" class="headerlink" title="什么东西需要序列化"></a>什么东西需要序列化</h3><h3 id="如何序列化"><a href="#如何序列化" class="headerlink" title="如何序列化"></a>如何序列化</h3><h3 id="提醒"><a href="#提醒" class="headerlink" title="提醒"></a>提醒</h3><p>由于序列化是根据 class 里面的 UID 来判断是否一致的，那么就存在以下两种情况：</p>
+<h3 id="什么东西需要序列化"><a href="#什么东西需要序列化" class="headerlink" title="什么东西需要序列化"></a>什么东西需要序列化</h3><p>判断标准只有一条：<strong>这个对象需不需要离开当前这一次 JVM 运行。</strong></p>
+<p>按「离开到哪里」分三类：</p>
+<p><strong>一、离开这个进程</strong>——RPC 调用。参数和返回值都要变成字节穿过网络。这也是为什么 RPC 框架里所有 DTO 必须可序列化。</p>
+<p><strong>二、离开这台机器</strong>——分布式缓存、消息队列。对象要写进 Redis 或 Kafka 的字节流里，另一台机器再读出来。</p>
+<p><strong>三、离开这段时间</strong>——持久化。最典型的是 <strong>Session</strong>：Tomcat 重启时会把 session 落盘，下次启动再读回来。</p>
+<p>三类里最容易忽略的是第三种。它不需要跨网络，也不跨机器，只跨了一次重启——但一样要求序列化。</p>
+<p>反过来，<code>ThreadLocal</code>、JDBC 的 <code>Connection</code>、文件句柄这些<strong>绝对不该</strong>序列化：它们代表的是「当前进程里的一个资源」，字节化之后没有任何意义。</p>
+<h3 id="如何序列化"><a href="#如何序列化" class="headerlink" title="如何序列化"></a>如何序列化</h3><p>Java 原生只需要两步：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> <span class="keyword">implements</span> <span class="title">Serializable</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = <span class="number">1L</span>;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> age;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 写</span></span><br><span class="line"><span class="keyword">try</span> (ObjectOutputStream out = <span class="keyword">new</span> ObjectOutputStream(<span class="keyword">new</span> FileOutputStream(<span class="string">"p.bin"</span>))) &#123;</span><br><span class="line">    out.writeObject(<span class="keyword">new</span> Person(<span class="string">"kaii"</span>, <span class="number">18</span>));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 读</span></span><br><span class="line"><span class="keyword">try</span> (ObjectInputStream in = <span class="keyword">new</span> ObjectInputStream(<span class="keyword">new</span> FileInputStream(<span class="string">"p.bin"</span>))) &#123;</span><br><span class="line">    Person p = (Person) in.readObject();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>但<strong>现在基本不用它</strong>，原因有四个：</p>
+<ol>
+<li><strong>反序列化本身是攻击面</strong>。<code>readObject</code> 会在还原对象时执行类里的逻辑，如果类路径上存在可利用的类，就形成反序列化漏洞链。这几年大部分 Java 远程代码执行都跟它有关。</li>
+<li><strong>只能 Java 读 Java</strong>。跨语言场景直接出局。</li>
+<li><strong>体积大、速度慢</strong>。原生格式带大量类型元信息，比 Protobuf 大好几倍。</li>
+<li><strong>版本兼容很脆</strong>。字段一改就可能读不出来。</li>
+</ol>
+<p>所以实际项目里通常换成：</p>
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th>常用方案</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>对外 API / 前后端</td>
+<td>JSON</td>
+</tr>
+<tr>
+<td>内部 RPC / 高性能</td>
+<td>Protobuf、Thrift</td>
+</tr>
+<tr>
+<td>缓存对象</td>
+<td>JSON 或 Kryo、FST</td>
+</tr>
+<tr>
+<td>配置/日志</td>
+<td>JSON、YAML</td>
+</tr>
+</tbody></table>
+<p><strong>共同点：都是「值序列化」，只保留数据本身，不保留「这是哪个类的实例」这个信息。</strong> 这也顺带把上面第 1 条漏洞堵掉了。</p>
+<h3 id="提醒"><a href="#提醒" class="headerlink" title="提醒"></a>提醒</h3><p>由于序列化是根据 class 里面的 UID 来判断是否一致的，那么就存在以下两种情况：</p>
 <ul>
 <li>当希望 class 的版本向后兼容时，可以保持 UID 不变，那么老的（已经序列化的）文件依旧可以进行反序列化。</li>
 <li>当不希望兼容时，要更改/更新 class 中的 UID，那么进行反序列化时就会报错。</li>
 </ul>
+<p>补一句坑：<strong>只要不显式声明 <code>serialVersionUID</code>，编译器会按类的结构自动算一个。</strong></p>
+<p>这意味着你「只是加了一个无关紧要的 private 方法」，算出来的值就可能变——然后老数据全体反序列化失败。所以规范做法是<strong>永远显式写上它</strong>，把控制权握在自己手里。</p>
 <h3 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h3><p>有哪些常见类实现了序列化？为什么？</p>
 <ul>
 <li><p>String</p>
+<p><code>String</code> 实现了 <code>Serializable</code>（还有 <code>CharSequence</code>、<code>Comparable</code>）。这不是随手加的：</p>
+<ul>
+<li>它可以当 <code>HashMap</code> 的 key，而 <code>HashMap</code> 本身又要能序列化 → key 必须可序列化；</li>
+<li>它是 Session attribute 的通用载体；</li>
+<li>它是 RPC 里出现频率最高的类型。</li>
+</ul>
+<p>一句话：<strong>所有「基础到可以当积木」的类型，都必须可序列化</strong>，否则上层任何对象都串不起来。</p>
 </li>
 <li><p>Session</p>
+<p>这里的 Session 指 <code>HttpSession</code>。它需要序列化是因为两件事：</p>
+<ul>
+<li><strong>重启不丢登录态</strong>：Servlet 容器在关闭时把 session 落盘，启动时读回来；</li>
+<li><strong>集群共享</strong>：多台 web 服务器之间同步会话。</li>
+</ul>
+<p>这也解释了一个常见事故：往 session 里塞了一个没实现 <code>Serializable</code> 的自定义对象——<strong>单机跑得好好的，一重启或者一做集群，用户全部掉线</strong>。</p>
+</li>
+<li><p>还有：<code>ArrayList</code>、<code>HashMap</code>、基本类型的包装类、<code>Date</code>、<code>Enum</code>、<code>BigDecimal</code>——都是同一逻辑：它们要能作为别的对象的组成部分被整体序列化。</p>
 </li>
 </ul>
 <h3 id="更新-2020-12-30-31"><a href="#更新-2020-12-30-31" class="headerlink" title="更新 2020.12.30~31"></a>更新 2020.12.30~31</h3><p>序列化之后会发生什么？</p>
 <p>今天碰到一个事，一个类的构造函数的一个入参是<code>Map&lt;String, String&gt;</code>，如果我传一个<code>null</code>进去的话，经过序列化+反序列化之后，他会变成一个空<code>Map</code>而不是原本的<code>null</code>。</p>
 <p>啊这？好好理解一下……</p>
-<p>&lt;To be continued … … &gt;</p>
+<h3 id="补完：那个-null-变空-Map-的事（2026-11-补）"><a href="#补完：那个-null-变空-Map-的事（2026-11-补）" class="headerlink" title="补完：那个 null 变空 Map 的事（2026-11 补）"></a>补完：那个 null 变空 Map 的事（2026-11 补）</h3><p>先把结论放在前面：<strong>Java 原生序列化不会做这件事。</strong></p>
+<p><code>ObjectOutputStream</code> 遇到字段是 <code>null</code> 时写的是 <code>TC_NULL</code> 标记，读回来仍然是 <code>null</code>。这一点可以直接测出来：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Holder</span> <span class="keyword">implements</span> <span class="title">Serializable</span> </span>&#123;</span><br><span class="line">    Map&lt;String, String&gt; m;          <span class="comment">// 不初始化</span></span><br><span class="line">    Holder(Map&lt;String, String&gt; m) &#123; <span class="keyword">this</span>.m = m; &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 写入时 m 为 null，读回来 m 仍然 == null</span></span><br></pre></td></tr></table></figure>
+
+<p>所以既然它变成了空 Map，说明<strong>变化发生在别的地方</strong>。按嫌疑从大到小，有四个位置：</p>
+<p><strong>一、类自己在 <code>readObject</code> 里做了兜底</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">readObject</span><span class="params">(ObjectInputStream in)</span> <span class="keyword">throws</span> IOException, ClassNotFoundException </span>&#123;</span><br><span class="line">    in.defaultReadObject();</span><br><span class="line">    <span class="keyword">if</span> (m == <span class="keyword">null</span>) m = <span class="keyword">new</span> HashMap&lt;&gt;();   <span class="comment">// ← 元凶就在这类地方</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这是最常见的原因。很多人为了让业务代码不用判空，在反序列化钩子里顺手补了个空集合。</p>
+<p><strong>二、字段声明时初始化，而反序列化没有覆盖它</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Holder</span> <span class="keyword">implements</span> <span class="title">Serializable</span> </span>&#123;</span><br><span class="line">    Map&lt;String, String&gt; m = <span class="keyword">new</span> HashMap&lt;&gt;();   <span class="comment">// ← 声明处初始化</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>原生序列化会覆盖这个初始值，但如果中间经过别的框架，或者走的是「先 new 再填字段」的路径（比如某些 Bean 映射），初始值就会留下来。</p>
+<p><strong>三、序列化框架层做的转换</strong></p>
+<p>这是最需要警惕的一类。原生序列化不会，但<strong>某些 RPC / JSON 框架会把 <code>null</code> 集合字段还原成空集合</strong>：</p>
+<ul>
+<li>Jackson 在开启特定配置后，集合类型的 <code>null</code> 会写成 <code>[]</code>，读回来就是空集合而不是 <code>null</code>；</li>
+<li>部分 RPC 框架（历史上 Hessian 就有过类似行为）在还原集合类型时，把缺省值当空集合处理。</li>
+</ul>
+<p><strong>这一条我没有在你的具体环境里验证过，只是把可能性列出来。</strong> 要确认只能看当时用的是哪个框架、哪个版本。</p>
+<p><strong>四、getter 里做了兜底</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> Map&lt;String, String&gt; <span class="title">getM</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> m == <span class="keyword">null</span> ? Collections.emptyMap() : m;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>字段本身还是 <code>null</code>，但所有调用方看到的都是空 Map。这类最容易误判——你以为数据变了，其实只是取值时被替换了。</p>
+<h3 id="怎么定位"><a href="#怎么定位" class="headerlink" title="怎么定位"></a>怎么定位</h3><p>按这个顺序查，一般三步内能锁定：</p>
+<ol>
+<li><strong>先确认字段本身是不是 null。</strong> 用反射直接读字段，别走 getter。如果字段是 null 而 getter 返回空，就是第四类。</li>
+<li><strong>搜这个类有没有 <code>readObject</code> / <code>readResolve</code>。</strong> 有就重点看——第一类的概率最高。</li>
+<li><strong>确认走的是哪个序列化器。</strong> 用 <code>ObjectOutputStream</code> 还是 JSON/Protobuf/Hessian？如果是后者，去查它处理 null 集合的默认行为。</li>
+</ol>
+<h3 id="这件事真正教给我的"><a href="#这件事真正教给我的" class="headerlink" title="这件事真正教给我的"></a>这件事真正教给我的</h3><p><strong>「序列化」这个词很容易让人以为是一个无损搬运的过程，其实不是。</strong></p>
+<p>原生 Java 序列化在语义上确实是无损的（null 还是 null，引用关系也保持），但真实系统里往往不是「纯序列化」，而是「序列化 + 框架的默认值策略 + 类的生命周期钩子」三样叠加。</p>
+<p><strong>排查这类问题的关键，是先确定「哪一段才是嫌疑人」</strong>——先证明原生序列化没干，再去框架和类里找。顺序反了，就会在错误的地方翻半天。</p>
+<blockquote>
+<p>这也是后来我在做三方对接时反复用到的一个思路：<strong>先证伪最不该出事的那一层，剩下的范围就窄了。</strong></p>
+</blockquote>
 
   </div>
 
