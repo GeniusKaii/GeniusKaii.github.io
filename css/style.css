@@ -212,9 +212,14 @@ a:hover {
   width: 76px;
 }
 .list-t {
-  flex: 1;
+  flex: 0 1 auto;
   font-size: 16px;
   line-height: 1.5;
+  min-width: 0;
+}
+.list-badge,
+.list-u {
+  margin-left: 2px;
 }
 .list-u {
   flex: 0 0 auto;
@@ -226,6 +231,32 @@ a:hover {
   background: transparent;
   border: 1px solid var(--green-dim);
   letter-spacing: 0.02em;
+}
+.list-badge {
+  flex: 0 0 auto;
+  font-size: 10px;
+  line-height: 1;
+  padding: 3px 6px;
+  border-radius: 4px;
+  letter-spacing: 0.04em;
+  font-weight: 600;
+  border: 1px solid transparent;
+  white-space: nowrap;
+}
+.list-badge-aigc {
+  color: var(--purple-deep);
+  border-color: var(--purple-dim);
+  background: transparent;
+}
+.list-badge-aigc-done {
+  color: var(--green);
+  border-color: var(--green-dim);
+  background: transparent;
+}
+.list-badge-yitu {
+  color: var(--ink-faint);
+  border-color: var(--line);
+  background: transparent;
 }
 .post {
   margin: 0;
