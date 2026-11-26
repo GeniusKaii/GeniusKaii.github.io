@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>[AIGC] 我给朋友们做了个猜年龄的小游戏 · 楚不得</title>
+  <meta name="description" content="人和人的差距在归纳和讲课">
+  
+<link rel="stylesheet" href="/css/style.css">
+<link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+<meta name="theme-color" content="#100a18">
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+<body>
+  <header class="top">
+    <div class="top-in">
+      <a class="brand" href="/">
+        <img src="/images/logo.svg" alt="" class="brand-logo" width="26" height="26">
+        <span class="brand-mark">楚不得</span>
+        <span class="brand-sub">Genius Kaii</span>
+      </a>
+      <nav class="nav">
+        <a href="/">首页</a>
+        <a href="/archives/">归档</a>
+        <a href="/categories/">分类</a>
+        <a href="/about/">关于</a>
+      </nav>
+      <div class="search">
+        <input type="search" id="q" class="search-in" placeholder="搜文章…" autocomplete="off" aria-label="搜索文章">
+        <button type="button" class="search-clear" id="qClear" aria-label="清空" hidden>×</button>
+      </div>
+    </div>
+    <div class="search-panel" id="qPanel" hidden>
+      <div class="search-state" id="qState"></div>
+      <ul class="search-list" id="qList"></ul>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <article class="post">
+  <header class="post-head">
+    <h1 class="post-title">我给朋友们做了个猜年龄的小游戏</h1>
+    <div class="post-meta">
+      <time datetime="2026-11-26T11:30:00.000Z">2026-11-26</time>
+            
+        <span class="meta-sep">·</span>
+        
+          <a href="/categories/Kaii-%E8%B0%88%E8%BD%AF%E4%BB%B6/" class="meta-cat">Kaii 谈软件</a>
+        
+      
+      
+      
+        <span class="meta-sep">·</span>
+        <span class="list-badge list-badge-aigc">AIGC</span>
+      
+    </div>
+  </header>
+
+  <div class="post-body">
+    <p>前段时间刷到一个日本网页游戏，叫「你的年龄是多少」。玩法简单到一句话：问你十几个关于年代的问题，看你记得哪些老物件、记得多深，然后反推你几岁。</p>
+<p>我玩了几局，被猜中得有点发毛。然后就想着：这东西搬到大陆来，应该挺有意思。</p>
+<a id="more"></a>
+
+<h3 id="它凭什么猜得准"><a href="#它凭什么猜得准" class="headerlink" title="它凭什么猜得准"></a>它凭什么猜得准</h3><p>一开始我以为背后是那种「选 A 得 3 分、选 B 得 1 分」的打分表。扒了它的源码才发现不是——它用的是<strong>贝叶斯推断</strong>。</p>
+<p>具体来说，它维护一个覆盖每个年龄的概率分布，每答一题就用贝叶斯公式更新一次。最关键的不是这个，是<strong>每道题它都不是「一句话加四个选项」，而是一段可计算的时间模型</strong>。</p>
+<p>比如「小霸王学习机」这道题，背后是这样的数据结构：</p>
+<ul>
+<li>1991 年开始流行，持续 12 年</li>
+<li>最容易着迷的年龄是 6 到 14 岁</li>
+<li>这个年龄段的人，80% 真的沉迷过</li>
+<li>但比这个年龄大的人，也有一小部分知道它</li>
+<li>比这个年龄小、甚至还没出生的人，后来也有一定概率认识</li>
+</ul>
+<p>最后一条是灵魂。<strong>它承认「没赶上但后来知道了」这种情况存在</strong>，而且这个概率会随着「差多少年」衰减。</p>
+<p>所以它不是简单地问「你知道小霸王吗」，它问的是：<strong>你当时在人生什么位置</strong>。</p>
+<h3 id="我踩的几个坑"><a href="#我踩的几个坑" class="headerlink" title="我踩的几个坑"></a>我踩的几个坑</h3><p>第一版我自己重写了算法，结果你猜怎么着——测出来 ±1 岁准确率只有 62%。我一度以为是我的题库不够好，加了两百道题，涨到 65%，就上不去了。</p>
+<p>后来去把原版的引擎源码完整读了一遍，发现我的模型里有个根本性的错误：<strong>计算「命中份额」的时候，我用的是简单平均，而它是 <code>1 - exp(-acc / 0.9)</code> 这样的指数饱和</strong>。这一条差别，让整个模型的区分能力掉了一大半。</p>
+<p>改过来之后，±1 岁直接从 62% 涨到 85%。</p>
+<p>这件事让我记了很久：<strong>看起来差不多的公式，行为可能差一个量级。</strong></p>
+<h3 id="然后遇到了更麻烦的问题"><a href="#然后遇到了更麻烦的问题" class="headerlink" title="然后遇到了更麻烦的问题"></a>然后遇到了更麻烦的问题</h3><p>朋友 A，32 岁，被猜成 36 岁。
+朋友 B，27 岁，被猜成 33 岁。</p>
+<p>都是<strong>系统性偏高</strong>，而且越年轻偏得越多。</p>
+<p>我一开始以为是参数调偏了，调了几轮没效果。后来让朋友把完整答题记录发我看，才找到真正的答案——</p>
+<p>她答「当然记得」的东西是：86 版西游记、四驱兄弟、灌篮高手、玻璃弹珠、踢毽子。</p>
+<p>按我题目里标的年份，这些都是 80 年代到 90 年代中期的内容。她 1999 年出生，那时候还没出生或者还在吃奶。模型一算：「她不可能记得，除非她比我以为的更老」，于是往上推。</p>
+<p>但事实是：</p>
+<ul>
+<li><strong>86 版西游记每年暑假都在重播</strong>，1999 年出生的人 2008 年照样看得很熟</li>
+<li><strong>四驱兄弟、灌篮高手是日本首播后好几年才引进大陆的</strong>，她正好赶上</li>
+<li><strong>玻璃弹珠、踢毽子在 2000 年代的小学里照样流行</strong>，不是 90 年代专属</li>
+</ul>
+<p><strong>我的题目把「流行期」标错了，不是模型错了。</strong></p>
+<p>这就是做年代类内容最容易犯的错：拿「首播年」当「流行期」。日本 1995 年首播的动画，大陆可能 1998 年才引进，2010 年的小学生还在看。</p>
+<h3 id="现在的样子"><a href="#现在的样子" class="headerlink" title="现在的样子"></a>现在的样子</h3><p>现在这个版本：</p>
+<ul>
+<li><strong>219 道题</strong>，从连环画、粮票、收音机，到喜羊羊、熊出没、原神、AI 工具</li>
+<li>专门补了两段缺口：2008-2015 年的儿童内容（对应 19-27 岁的人），和 1990-2000 年的儿童内容（对应 31-40 岁）</li>
+<li>选项从「沉迷过 / 用过 / 只听过 / 不知道」改成了「当然记得 / 有点印象 / 只听过名字 / 完全没印象」</li>
+</ul>
+<p>最后这个改动也是被朋友骂出来的。她说：「我很喜欢，但没到沉迷，你让我选什么？」——<strong>当选项逼着人说假话的时候，再准的模型也没用。</strong></p>
+<p>改完之后，20-40 岁区间的模拟精度是：±1 岁 87%，±3 岁 99%，±5 岁 99.9%。</p>
+<h3 id="一个坦白"><a href="#一个坦白" class="headerlink" title="一个坦白"></a>一个坦白</h3><p>这些数字都是<strong>模拟器跑出来的</strong>，不是真实用户数据。</p>
+<p>模拟器的逻辑是：给定一个真实年龄，按模型算出的概率去采样答案，模拟一个「完美的、完全按自己真实情况作答的玩家」。真实的人会手滑、会记错、会因为不想被猜准而乱答。</p>
+<p>原版那个日本游戏，是收集了几十万真实答案之后，才把模型校准到真正准的程度。我这边是纯静态页面，没有后端、不收集数据，做不到那一步。</p>
+<p>所以这个 87% 是<strong>上限</strong>，真实体验会低一些。</p>
+<h3 id="玩一下？"><a href="#玩一下？" class="headerlink" title="玩一下？"></a>玩一下？</h3><p>游戏在这里：<strong><a href="https://kaii.fun/games/age-memory/">https://kaii.fun/games/age-memory/</a></strong></p>
+<p>纯前端，不联网、不收集任何数据，你的答案不会上传。测完可以直接保存成绩图发给朋友。</p>
+<p>我做这个东西的初衷其实很朴素：想验证一下「理解一个东西最快的方式是不是重写它一遍」，以及「做给朋友玩的东西，和做给自己的东西，标准差多少」。</p>
+<p>第一个问题的答案是：是，但会踩很多你以为不会踩的坑。</p>
+<p>第二个问题的答案是：标准高很多，因为朋友会毫不客气地告诉你哪里难用。</p>
+
+  </div>
+
+    
+  
+
+
+  
+    <nav class="post-pager">
+      
+      
+        <a href="/2026/11/23/Productivity/AI/riemann-ai-and-me/" class="pager-item pager-next">
+          <span class="pager-k">下一篇 →</span>
+          <span class="pager-t">[AIGC] 黎曼猜想被 AI 攻下之后，和我有什么关系</span>
+        </a>
+      
+    </nav>
+  
+
+  
+</article>
+
+  </main>
+
+  <footer class="foot">
+    <div class="foot-line">
+      <span class="foot-dot"></span>
+      <span>楚不得 · Genius Kaii</span>
+      <a href="/hidden/" class="foot-room" title="受保护的入口">✦</a>
+    </div>
+    <div class="beian">
+      <a href="https://beian.miit.gov.cn" target="_blank" rel="noopener">沪ICP备19045992号</a>
+      <span class="beian-sep">·</span>
+      <a href="https://beian.mps.gov.cn/portal/registerSystemInfo?recordcode=31011802004234" target="_blank" rel="noopener" class="beian-gongan">
+        <img src="/images/gong_an.png" alt="" class="beian-icon">沪公网安备 31011802004234号
+      </a>
+    </div>
+  </footer>
+
+  <script src="/js/search.js" defer></script>
+</body>
+</html>
