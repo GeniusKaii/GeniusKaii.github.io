@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 340" width="760" height="340" style="max-width:100%;height:auto">
+<rect width="760" height="340" rx="14" fill="#221a30"/>
+
+<text x="34" y="34" font-size="17" font-weight="700" fill="#c9a7ff">我犯的错：把「首播年」当成了「流行期」</text>
+<text x="34" y="58" font-size="13" fill="#a89cba">1999 年出生的人，童年是 2003–2013，动画可能是 2008 年才看到</text>
+<line x1="137" y1="72" x2="137" y2="238" stroke="#3a3048" stroke-width="1" opacity="0.6"/>
+<text x="137" y="62" font-size="11" fill="#7a6f8d" text-anchor="middle">1985</text><line x1="232" y1="72" x2="232" y2="238" stroke="#3a3048" stroke-width="1" opacity="0.6"/>
+<text x="232" y="62" font-size="11" fill="#7a6f8d" text-anchor="middle">1990</text><line x1="327" y1="72" x2="327" y2="238" stroke="#3a3048" stroke-width="1" opacity="0.6"/>
+<text x="327" y="62" font-size="11" fill="#7a6f8d" text-anchor="middle">1995</text><line x1="422" y1="72" x2="422" y2="238" stroke="#3a3048" stroke-width="1" opacity="0.6"/>
+<text x="422" y="62" font-size="11" fill="#7a6f8d" text-anchor="middle">2000</text><line x1="517" y1="72" x2="517" y2="238" stroke="#3a3048" stroke-width="1" opacity="0.6"/>
+<text x="517" y="62" font-size="11" fill="#7a6f8d" text-anchor="middle">2005</text><line x1="612" y1="72" x2="612" y2="238" stroke="#3a3048" stroke-width="1" opacity="0.6"/>
+<text x="612" y="62" font-size="11" fill="#7a6f8d" text-anchor="middle">2010</text><line x1="707" y1="72" x2="707" y2="238" stroke="#3a3048" stroke-width="1" opacity="0.6"/>
+<text x="707" y="62" font-size="11" fill="#7a6f8d" text-anchor="middle">2015</text><text x="104" y="101" font-size="13" fill="#ded7e9" text-anchor="end">86 版西游记</text>
+<rect x="156" y="80" width="19" height="12" rx="3" fill="#e8a04c" opacity="0.85"/>
+<rect x="156" y="95" width="475" height="12" rx="3" fill="#3ddc97" opacity="0.9"/>
+<text x="622" y="107" font-size="11.5" fill="#a89cba">年年暑假重播</text><text x="104" y="159" font-size="13" fill="#ded7e9" text-anchor="end">四驱兄弟</text>
+<rect x="346" y="138" width="38" height="12" rx="3" fill="#e8a04c" opacity="0.85"/>
+<rect x="384" y="153" width="152" height="12" rx="3" fill="#3ddc97" opacity="0.9"/>
+<text x="527" y="165" font-size="11.5" fill="#a89cba">大陆引进晚 2 年</text><text x="104" y="217" font-size="13" fill="#ded7e9" text-anchor="end">灌篮高手</text>
+<rect x="289" y="196" width="76" height="12" rx="3" fill="#e8a04c" opacity="0.85"/>
+<rect x="384" y="211" width="171" height="12" rx="3" fill="#3ddc97" opacity="0.9"/>
+<text x="546" y="223" font-size="11.5" fill="#a89cba">大陆引进晚 5 年</text>
+
+<g font-size="12.5">
+  <rect x="34" y="266" width="14" height="12" rx="3" fill="#e8a04c" opacity="0.85"/>
+  <text x="56" y="277" fill="#ded7e9">日本首播期</text>
+  <rect x="176" y="266" width="14" height="12" rx="3" fill="#3ddc97"/>
+  <text x="198" y="277" fill="#ded7e9">大陆真正流行期</text>
+  <text x="360" y="277" fill="#7a6f8d">差的这几年，就是年龄被猜老的原因</text>
+</g>
+</svg>

@@ -100,6 +100,13 @@ a:hover {
   letter-spacing: 0.04em;
   color: var(--purple-deep);
 }
+/* 站名两段配色：首个字紫，其余绿 */
+.brand-mark .bm-a {
+  color: var(--purple-deep);
+}
+.brand-mark .bm-b {
+  color: var(--green);
+}
 .brand-sub {
   font-size: 12px;
   color: var(--ink-faint);
@@ -1143,6 +1150,13 @@ a:hover {
   }
   .post-body h2 {
     font-size: 19px;
+  }
+  .post-pager {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .pager-item {
+    flex: 0 0 auto;
   }
   .post-body h3 {
     font-size: 17px;
