@@ -8,7 +8,23 @@
   
 <link rel="stylesheet" href="/css/style.css">
 <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/images/favicon-192.png">
+
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
 <meta name="theme-color" content="#100a18">
+
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="楚不得">
+<meta property="og:title" content="在 CentOS 7 上安装 Kubernetes · 楚不得">
+<meta property="og:description" content="这篇文章被加密了，输入密码后查看。">
+<meta property="og:url" content="https://kaii.fun/2021/06/09/Productivity/3PP/Kubernetes/Install-Kubernetes-on-CentOS-7/">
+<meta property="og:image" content="https://kaii.fun/images/share-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="在 CentOS 7 上安装 Kubernetes · 楚不得">
+<meta name="twitter:description" content="这篇文章被加密了，输入密码后查看。">
+<meta name="twitter:image" content="https://kaii.fun/images/share-cover.png">
 
 <meta name="generator" content="Hexo 4.2.1"></head>
 <body>
@@ -60,11 +76,11 @@
      data-wpm="密码不对，再试一次"
      data-whm="密码不对，再试一次"
      data-salt="72b9b7feacdea0e2c84a05bce39956724f8b51e9493d75252c53ad76e5e0fbc3"
-     data-nonce="0d6b2b043e27bf98332bc0a3"
+     data-nonce="8d22ea295b7b475ae6e5d9df"
      data-kdf-iterations="250000"
      data-auto-save="true">
   <script id="hbeData" type="hbeData">
-    c86560410d63abbc21b3d66b8384e605a4c3b4fa9ea94327f32dddadf5ff46d23dd7a64494726c3ab3ac3768aabf1d39587c2bde20b1598307fc790d5684534b40c9ed993d64e62aa71aae8537ab7be7236594f13adc640e413536368d7532630a9edad322691b4147dded19b9f6b0a07cf826062093bb367dcfc76c8519c0ef5abea3a9e514daba4d0fed9696ef5e2952c301a61e22de9f639756ba57f6219ac38c6b1f93f3510854e9020753ee498db3544d2ac2cbbd11ccdfbfed068652b0795447a4792eab56273383093d57ce569c18753291ca6b5f530f631b3b8d9d686aa63a10a71a0e953676056954d48f63bbf4e5b8814bc4e684b67e4a3106bced7af291634670740883518db5bbc1933e67708c147f89a2122aba882cdc51bb05cdec929928b5ce45b0ad4ea734ba4825cd1679fa94ad969dcabebff167b37e06a23d4de81b4fb5f85c2cfae6b8a2ec7bd78fe236ea4a9ada96f2becb4e9357433399271020d945d10aa588123d9c5bfeb48d9cf00bb8818f24fd5c6512ae23b95eec4867152fe4129fd81c02f96969d8d1a526c5159cf86aa59c9fa21c4829f08447f8563f2863eb9203571f00f4d82b4461b025ec32f0739ce087ef9e1cfda7f189c4213efde86117a40747d6cbfae3de74867cc90cec4bc4770fc755aa4f631f83904d6f7669ee602be83a1fce30ec34aab5ac2e0de91a1674194cda334fc2300352bd1ae54afdfa7f834b4e3c5621f86d4829446cec85e14c0caa6e9cc1c2a210dc43c430f90f4149edf5709e2cf3c59339bc56e7642c1c05743f3d94eadc8b88f75625d4bc5aae881d59b0dd36e469e296fae8aa5d07df4cc4998602bab71516c7df1cb14d9205caa6b43d3dc6d3e707470d2e64e29bb2
+    7dc8c71af231492ef9e33cd7bb6be1b81a09e9a267d8d50e4969d49cb94ce5867e0f677bd87f0f36a32b486fd821fdf4e4ba74b2ec31aabe8fa98f86f70b74f90ab5a7f19ffa8bef016fcf61369864a048942cd29904a96534ddd82ad804e555e7ce4f8f35a7ca3b739f5573dd351a1223a811d515802e14ab3d3f8ce4650c357ad075f3256b60eef24e6f4ebf20aeb76bd35c1b992a87eaa32d247e9680fb556f85e3c76d2e5fc6540a495cafe9dce1aae92e54d3a68e908ff5cefba027fe3b65416e8225d2bbc89a05ed3e9b6d0a58c76cb83a0df7037208e7e8336550f6138de733950002fea1c900ffc3aa051303cffc9ab8c7cbdc71b6002037498ab3f2425727a61cf45be55da35c88ed29c1517aa061caf0177c8af1a5ed9192503e903b2f4da0c649fd8e19d0a1ecc6c00344036c8046d1bff3ebd17a2b68653e3e33e7d6f493142094ade37267ffd89cfb58e29b17dc81f2ca6904fb23dc1930667d0e46abe14a765d0567773e19649eaa71b7a76a15696e6989f9ff8bd5335679b86da14fd76ee7be1e12d8876f7ac7ccce7c17974b3e7695524a6ff4aa740b57cd32906d514816c645ae90b28ea2d12c7304b21c9f7c8a3736c33ee41b441a922519caa35d7f81a9d372e808ec08ff56a14f2753e4cd8e533382e8d75b09748ecb180139a08a5a971b5477b03d73b5ae3bc3417168ee6cb6d20867e0775e7bc7a4c999fbb2d70d6ce1a302d8e9795598c9d85905a00b80984bb5261364789394594e1ac52e2da69da124480f59db832688ffee8866b260a02d82adfe66392ad37deb17cf7e399c71a8279f02ab8082642585ab63a6952dd3faf61ebb87257163d09a85e8519560398877aa1e7c669f4567c3cc2e74fa0502f1d5
   </script>
   <div class="hbe hbe-content">
     <form id="hbeForm" class="hbe hbe-form">
