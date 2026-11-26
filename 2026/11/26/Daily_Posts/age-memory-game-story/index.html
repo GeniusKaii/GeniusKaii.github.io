@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>[AIGC] 我给朋友们做了个猜年龄的小游戏 · 楚不得</title>
+  <title>[AIGC] 复刻了一个猜年龄的小游戏：从日本版到大陆版 · 楚不得</title>
   <meta name="description" content="人和人的差距在归纳和讲课">
   
 <link rel="stylesheet" href="/css/style.css">
@@ -39,7 +39,7 @@
   <main class="wrap">
     <article class="post">
   <header class="post-head">
-    <h1 class="post-title">我给朋友们做了个猜年龄的小游戏</h1>
+    <h1 class="post-title">复刻了一个猜年龄的小游戏：从日本版到大陆版</h1>
     <div class="post-meta">
       <time datetime="2026-11-26T11:30:00.000Z">2026-11-26</time>
             
@@ -58,7 +58,7 @@
 
   <div class="post-body">
     <p>前段时间刷到一个日本网页游戏，叫「你的年龄是多少」。玩法简单到一句话：问你十几个关于年代的问题，看你记得哪些老物件、记得多深，然后反推你几岁。</p>
-<p>玩了几局，觉得这个思路挺有意思，就想搬到大陆来做一版。</p>
+<p>玩了几局，觉得这个思路挺有意思，就想照着复刻一个大陆版。</p>
 <p>做完了，先放出来：<strong><a href="https://kaii.fun/games/age-memory/">https://kaii.fun/games/age-memory/</a></strong></p>
 <p>纯前端，不联网、不收集任何数据，测完可以直接把成绩图发给朋友。</p>
 <a id="more"></a>
@@ -105,9 +105,10 @@
 <p>模拟器的逻辑是：给定一个真实年龄，按模型算出的概率去采样答案，模拟一个「完美的、完全按自己真实情况作答的玩家」。真实的人会手滑、会记错、会因为不想被猜准而乱答。</p>
 <p>原版那个日本游戏，是收集了几十万真实答案之后，才把模型校准到真正准的程度。我这边是纯静态页面，没有后端、不收集数据，做不到那一步。</p>
 <p>所以这个 87% 是<strong>上限</strong>，真实体验会低一些。</p>
-<h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><p>我做这个东西的初衷其实很朴素：想验证一下「理解一个东西最快的方式是不是重写它一遍」，以及「做给朋友玩的东西，和做给自己的东西，标准差多少」。</p>
+<h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><p>这次复刻的初衷其实很朴素：想验证一下「理解一个东西最快的方式是不是照着重写它一遍」，以及「做给朋友玩的东西，和做给自己的东西，标准差多少」。</p>
 <p>第一个问题的答案是：是，但会踩很多你以为不会踩的坑。</p>
 <p>第二个问题的答案是：标准高很多，因为朋友会毫不客气地告诉你哪里难用。</p>
+<p>最后声明一句：<strong>这个游戏的设计和算法来自日本 KEPIGAME 的原作，我只是按大陆的题材和语境重做了一版，没有借用它的题库内容。</strong> 原站地址：<a href="https://kepigame.com/games/nenrei.html" target="_blank" rel="noopener">https://kepigame.com/games/nenrei.html</a></p>
 
   </div>
 
